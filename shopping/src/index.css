@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#searchButton {
+  color: lightblue;
+  background-color: black;
+}
+
+button {
+  color: greenyellow;
+  background-color: brown;
+}
+
+.a.b.c.d {
+  color: red;
+  background-color: purple;
+}
+
+.a.b.c.d.e {
+  color: black;
+  background-color: white;
+}
