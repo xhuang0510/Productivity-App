@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; //import React Component
 import './App.css';
-import {Item, ItemList} from "./Components"
+import {LeftMenu, RightMenu, CenterMenu} from "./Menus"
 
 export class App extends Component {
   // Initializing the state of the application
@@ -31,7 +31,9 @@ export class App extends Component {
     console.log("Rendering...");
     return (
       <div className="App">
-        
+        <LeftMenu></LeftMenu>
+        <CenterMenu></CenterMenu>
+        <RightMenu></RightMenu>
       </div>
     );
   }
