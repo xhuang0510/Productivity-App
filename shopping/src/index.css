@@ -22,12 +22,23 @@ button {
   background-color: brown;
 }
 
-.a.b.c.d {
-  color: red;
-  background-color: purple;
+button:hover {
+  color: white;
+  background-color: black;
 }
 
-.a.b.c.d.e {
-  color: black;
-  background-color: white;
+button:active {
+  color: purple;
+  background-color:white;
+}
+
+.thisSection {
+  color: pink;
+  background-image: url("./Beautiful-Norway.jpg");
+  background-repeat: no-repeat
+}
+
+#App {
+  display: flex;
+  align-items: center;
 }

@@ -30,7 +30,7 @@ export class App extends Component {
   render() {
     console.log("Rendering...");
     return (
-      <div className="App">
+      <div className="App" id="App">
         <LeftMenu></LeftMenu>
         <CenterMenu></CenterMenu>
         <RightMenu></RightMenu>
