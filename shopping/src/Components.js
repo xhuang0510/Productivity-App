@@ -30,7 +30,25 @@ export class ScheduleBlock extends Component {
 }
 
 export class ToggleButton extends Component {
+    constructor(props){
+        super(props)
+        this.state={
+            textDisplay: true,
+        }
+    }
+    ToggleButton(){
+        this.setState((currentState) => ({
+            textDisplay: currentState.textDisplay, 
+        }));
+    }
     render() {
-        return (<div>The time is: </div>);
+        return(
+            <div>
+                <button onClick={() => this.ToggleButton()}>
+                  Toggle
+                </button>
+                {!this.state.textDisplay && this.props.text}
+            </div>
+        )
     }
 }
