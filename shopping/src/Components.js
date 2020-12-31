@@ -8,6 +8,7 @@ export class StickyNote extends Component {
     }
 }
 
+// You can do an array of elements to render them all at once
 export class StickyNoteList extends Component {
     render() {
         let stickyNotes = [];
