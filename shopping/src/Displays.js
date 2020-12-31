@@ -22,7 +22,8 @@ export class AccountInfoDisplay extends Component {
                 <br></br>
                 <br></br>
                 <br></br>
-                <ToggleButton></ToggleButton>
+                <ToggleButton text="On" />
+                
             </div>
         )
     }
