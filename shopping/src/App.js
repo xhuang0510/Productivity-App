@@ -34,6 +34,7 @@ export class App extends Component {
         <LeftMenu></LeftMenu>
         <CenterMenu></CenterMenu>
         <RightMenu></RightMenu>
+        
       </div>
     );
   }

@@ -22,6 +22,11 @@ export class AccountInfoDisplay extends Component {
                 <br></br>
                 <header>This is a header</header>
                 <p>This is a paragraph</p>
+                <br></br>
+                <br></br>
+                <br></br>
+                <ToggleButton text="On" />
+                
             </div>
         )
     }
