@@ -4,6 +4,7 @@ import {StickyNote, StickyNoteList, ScheduleBlock, ToggleButton} from "./Compone
 import Clock from 'react-live-clock';
 
 export class AccountInfoDisplay extends Component {
+    // Stores the state of this component and inherits properties from parent
     constructor(props) {
         super(props);
         this.state = {
@@ -11,6 +12,8 @@ export class AccountInfoDisplay extends Component {
         }
     }
 
+    // Renders the component
+    // Whenever you change state, the component re-renders
     render() {
         console.log("rendering");
         return (
@@ -22,7 +25,8 @@ export class AccountInfoDisplay extends Component {
                 <br></br>
                 <br></br>
                 <br></br>
-                <ToggleButton></ToggleButton>
+                <ToggleButton text="On" />
+                
             </div>
         )
     }
