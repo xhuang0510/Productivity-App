@@ -25,6 +25,11 @@ export class StickyNoteList extends Component {
 }
 
 export class ScheduleBlock extends Component {
+    constructor(props) {
+        super(props);
+        
+    }
+
     render() {
         return (<div>The time is: </div>);
     }
