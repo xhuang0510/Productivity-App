@@ -1,0 +1,25 @@
+{
+  "name": "producitivity-app",
+  "version": "1.0.0",
+  "description": "An app for making an academic schedule based on a To Do list input",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node your-script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xhuang0510/Productivity-App.git"
+  },
+  "author": "Avi Dixit", 
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xhuang0510/Productivity-App/issues"
+  },
+  "homepage": "https://github.com/xhuang0510/Productivity-App#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "keywords": []
+}

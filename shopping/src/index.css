@@ -12,13 +12,13 @@ code {
     monospace;
 }
 
-#searchButton {
+/* #searchButton {
   color: lightblue;
   background-color: black;
-}
+} */
 
-button {
-  color: greenyellow;
+/* button {
+  color: yellow;
   background-color: brown;
 }
 
@@ -30,7 +30,7 @@ button:hover {
 button:active {
   color: purple;
   background-color:white;
-}
+} */
 
 .thisSection {
   color: pink;
@@ -42,3 +42,71 @@ button:active {
   display: flex;
   align-items: center;
 }
+
+#notesWrapper {
+  padding: 50px
+}
+
+.sticky-notes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.note {
+  background-color: #f0c806;
+  border-radius: 8px;
+  width: 288px;
+  margin: 0 10px 20px;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s;
+  cursor: pointer;
+  font-family: 'Times New Roman', cursive;
+}
+
+.note:hover {
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.note-header {
+  padding: 10px 16px 0;
+}
+.note-close {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  line-height: 24px;
+  text-align: center;
+  transition: all 0.3s;
+  background-color: #f0c806;
+  border: none
+} 
+
+.note-close{
+  float: right
+}
+
+.note-close:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.note-title {
+  outline: 0;
+  font-size: 24px;
+  padding: 10px 16px;
+  font-weight: bold;
+}
+
+.note-body {
+  outline: 0;
+  font-size: 20px;
+  padding: 10px 16px, 16px;
+}
+
+
+
+
+
+
