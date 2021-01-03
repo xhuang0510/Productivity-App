@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; //import React Component
 import "./index.css";
-import {StickyNote, StickyNoteList, ScheduleBlock, ToggleButton, ScheduleBlockList} from "./Components"
+import {StickyNote, StickyNoteList, ScheduleBlock, ToggleButton, NewNoteButton} from "./Components"
 import Clock from 'react-live-clock';
 import {Inject, ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, ViewsDirective, ViewDirective} from "@syncfusion/ej2-react-schedule"
 
@@ -42,7 +42,12 @@ export class StickyNotesSection extends Component {
     }
 
     render() {
-        return (<StickyNoteList></StickyNoteList>);
+        return (
+            <div>
+                <StickyNoteList></StickyNoteList>,
+                <NewNoteButton></NewNoteButton>
+            </div>
+        );
     }
 }
 
