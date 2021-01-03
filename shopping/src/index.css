@@ -47,7 +47,7 @@ button:active {
   padding-left: 100px;
 }
 #notesWrapper {
-  padding: 50px
+  padding: 10px
 }
 
 .sticky-notes {
@@ -61,7 +61,8 @@ button:active {
   background-color: #f0c806;
   border-radius: 8px;
   width: 288px;
-  margin: 0 10px 20px;
+  padding-bottom: 25px;
+  margin: 0 10px 5px;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
   transition: all 0.5s;
   cursor: pointer;
@@ -69,11 +70,11 @@ button:active {
 }
 
 .note:hover {
-  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .note-header {
-  padding: 10px 16px 0;
+  padding: 10px 15px 0;
 }
 .note-close {
   display: inline-block;
@@ -98,20 +99,23 @@ button:active {
 .note-title {
   outline: 0;
   font-size: 24px;
-  padding: 10px 16px;
+  padding: 0px 10px;
+  text-align: left;
   font-weight: bold;
 }
 
 .note-body {
   outline: 0;
-  font-size: 20px;
-  padding: 10px 16px, 16px;
+  font-size: 16px;
+  padding: 0px 10px;
+  text-align: left;
 }
 
 .new-note-button {
   display: inline-block;
-  padding: 15px 25px;
-  font-size: 24px;
+  padding: 5px 15px;
+  font-size: 20px;
+  font-weight: bold;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -119,8 +123,10 @@ button:active {
   color: #000000;
   background-color: #f0c806;
   border: none;
-  border-radius: 15px;
   box-shadow: 0 9px #999;
+  border-radius: 8px;
+  width: 288px;
+  margin: 10px 10px 15px;
 }
 
 .new-note-button:hover {background-color: #e0bb06}
