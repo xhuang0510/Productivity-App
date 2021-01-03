@@ -105,6 +105,29 @@ button:active {
   padding: 10px 16px, 16px;
 }
 
+.new-note-button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #000000;
+  background-color: #f0c806;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.new-note-button:hover {background-color: #e0bb06}
+
+.new-note-button:active {
+  background-color:  #e0bb06;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
 
 
 
