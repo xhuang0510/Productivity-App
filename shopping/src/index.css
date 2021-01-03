@@ -39,7 +39,7 @@ code {
 }
 
 .note {
-  background-color: #f0c806;
+  background-color: #eb4034;
   border-radius: 8px;
   width: 288px;
   padding-bottom: 25px;
@@ -64,9 +64,10 @@ code {
   border-radius: 50%;
   line-height: 24px;
   text-align: center;
-  transition: all 0.3s;
-  background-color: #f0c806;
-  border: none
+  transition: all 0.1s;
+  background-color:#eb4034;
+  border: none;
+  outline: 0;
 } 
 
 .note-close{
@@ -101,25 +102,25 @@ code {
   text-align: center;
   text-decoration: none;
   outline: none;
-  color: #000000;
-  background-color: #f0c806;
+  background-color: #eb4034;
   border: none;
   box-shadow: 0 9px #999;
   border-radius: 8px;
   width: 288px;
   margin: 10px 10px 15px;
+  transition: all 0.5s;
 }
 
-.new-note-button:hover {background-color: #e0bb06}
+.new-note-button:hover {background-color: #d6382d}
 
 .new-note-button:active {
-  background-color:  #e0bb06;
+  background-color:  #d6382d;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
 
 .dark {
-  background-color:#2a2711;
+  background-color: #212121;
   color: white;
 }
 
