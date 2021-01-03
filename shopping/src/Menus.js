@@ -7,6 +7,7 @@ export class LeftMenu extends Component {
         return (
             <div>
                 This is Left
+                Hello this is a REALLYYYYYYYYYYYYYYYYYYY long line
             </div>
         );
     }
@@ -15,8 +16,8 @@ export class LeftMenu extends Component {
 export class CenterMenu extends Component {
     render() {
         return (
-            <div class="thisSection">
-                This is Center
+            <div className="thisSection">
+                <ScheduleUI></ScheduleUI>
             </div>
         );
     }
@@ -35,6 +36,7 @@ export class RightMenu extends Component {
             <div>
                 <AccountInfoDisplay></AccountInfoDisplay>
                 <StickyNotesSection></StickyNotesSection>
+                Hello this is a REALLYYYYYYYYYYYYYYYYYYY long line
             </div>
         )
     }

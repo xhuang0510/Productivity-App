@@ -34,11 +34,15 @@ button:active {
 
 .thisSection {
   color: pink;
-  background-image: url("./Beautiful-Norway.jpg");
-  background-repeat: no-repeat
+  /* background-image: url("./Beautiful-Norway.jpg"); */
+  /* background-repeat: no-repeat */
 }
 
-#App {
+.App {
   display: flex;
   align-items: center;
+}
+
+.menu {
+  padding-left: 100px;
 }

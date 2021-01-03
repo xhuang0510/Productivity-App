@@ -1,7 +1,8 @@
 import React, { Component } from 'react'; //import React Component
 import "./index.css";
-import {StickyNote, StickyNoteList, ScheduleBlock, ToggleButton} from "./Components"
+import {StickyNote, StickyNoteList, ScheduleBlock, ToggleButton, ScheduleBlockList} from "./Components"
 import Clock from 'react-live-clock';
+import {Inject, ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, ViewsDirective, ViewDirective} from "@syncfusion/ej2-react-schedule"
 
 export class AccountInfoDisplay extends Component {
     // Stores the state of this component and inherits properties from parent
@@ -54,7 +55,17 @@ export class ScheduleUI extends Component {
     }
 
     render() {
-        return (<div>The time is: </div>);
+        return (
+            <div className="scheduleSection">
+                <ScheduleComponent cssClass='schedule-cell-dimension' width="100%" height="720px">
+                    <ViewsDirective>
+                        <ViewDirective option='Day'/>
+                        <ViewDirective option='Week'/>
+                    </ViewsDirective>
+                    <Inject services={[Day, Week]}></Inject>
+                </ScheduleComponent>
+            </div>
+        );
     }
 }
 

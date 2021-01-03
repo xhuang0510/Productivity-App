@@ -7,13 +7,23 @@ export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+      scheduleObjects: [],
+      stickyNoteObjects: [],
+
     }
   }
 
   // test
   sayhello = () => {
     console.log("Hello World!");
+  }
+
+  updateState = (state) => {
+    this.setState(
+      () => {
+        return state;
+      }
+    )
   }
 
   // Resets display state to default if window is resized
@@ -31,10 +41,9 @@ export class App extends Component {
     console.log("Rendering...");
     return (
       <div className="App" id="App">
-        <LeftMenu></LeftMenu>
-        <CenterMenu></CenterMenu>
-        <RightMenu></RightMenu>
-        
+        <LeftMenu className="menu"></LeftMenu>
+        <CenterMenu className="menu"></CenterMenu>
+        <RightMenu className="menu"></RightMenu>
       </div>
     );
   }
