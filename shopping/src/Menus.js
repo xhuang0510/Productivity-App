@@ -9,8 +9,8 @@ export class LeftMenu extends Component {
                 This is Left
                 Hello this is a REALLYYYYYYYYYYYYYYYYYYY long line
                 <br></br>
-                <label class="toggle-switch" onClick={this.props.toggle}>
-                    <input type="checkbox"></input>
+                <label class="toggle-switch">
+                    <input type="checkbox" onChange={this.props.toggle}></input>
                     <span class="round-slider"></span>
                 </label>            
             </div>
