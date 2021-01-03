@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; //import React Component
 import "./index.css";
-import {StickyNote, StickyNoteList, ScheduleBlock, ToggleButton} from "./Components"
+import {StickyNote, StickyNoteList, ScheduleBlock, ToggleButton, NewNoteButton} from "./Components"
 import Clock from 'react-live-clock';
 
 export class AccountInfoDisplay extends Component {
@@ -41,7 +41,12 @@ export class StickyNotesSection extends Component {
     }
 
     render() {
-        return (<StickyNoteList></StickyNoteList>);
+        return (
+            <div>
+                <StickyNoteList></StickyNoteList>,
+                <NewNoteButton></NewNoteButton>
+            </div>
+        );
     }
 }
 
