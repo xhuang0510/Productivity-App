@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; //import React Component
 import "./index.css";
-import {AccountInfoDisplay, StickyNotesSection, ScheduleUI, StatsUI, AchievementsUI, OptionsUI, AboutUI, ToggleButton} from "./Displays"
+import {AccountInfoDisplay, StickyNotesSection, ScheduleUI, StatsUI, AchievementsUI, OptionsUI, AboutUI} from "./Displays"
 
 export class LeftMenu extends Component {
     render() {
@@ -9,8 +9,10 @@ export class LeftMenu extends Component {
                 This is Left
                 Hello this is a REALLYYYYYYYYYYYYYYYYYYY long line
                 <br></br>
-                <button onClick={this.props.toggle}>Light/Dark</button>
-                <ToggleButton text="Dark/Light" onClick={this.props.toggle}></ToggleButton>
+                <label class="toggle-switch" onClick={this.props.toggle}>
+                    <input type="checkbox"></input>
+                    <span class="round-slider"></span>
+                </label>            
             </div>
         );
     }

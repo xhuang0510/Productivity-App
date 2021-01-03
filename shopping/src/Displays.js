@@ -124,28 +124,28 @@ export class AboutUI extends Component {
     }
 }
 
-export class ToggleButton extends Component {
-    constructor(props){
-        super(props);
-        this.state={
-            textDisplay: false,
-        }
-    }
+// export class ToggleButton extends Component {
+//     constructor(props){
+//         super(props);
+//         this.state={
+//             textDisplay: false,
+//         }
+//     }
 
-    Toggled(){
-        this.setState((currentState) => ({
-            textDisplay: !currentState.textDisplay, 
-        }));
-    }
+//     Toggled(){
+//         this.setState((currentState) => ({
+//             textDisplay: !currentState.textDisplay, 
+//         }));
+//     }
 
-    render(){
-        return(
-            <div>
-                <button onClick={() => this.Toggled()}>
-                  Toggle
-                </button>
-                {!this.state.textDisplay && this.props.text}
-            </div>
-        )
-    }
-}
+//     render(){
+//         return(
+//             <div>
+//                 <button onClick={() => this.Toggled()}>
+//                   Toggle
+//                 </button>
+//                 {!this.state.textDisplay && this.props.text}
+//             </div>
+//         )
+//     }
+// }
