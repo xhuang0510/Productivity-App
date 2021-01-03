@@ -2,7 +2,7 @@ import React, { Component } from 'react'; //import React Component
 import "./index.css";
 import {StickyNote, StickyNoteList, ScheduleBlock, ToggleButton, NewNoteButton} from "./Components"
 import Clock from 'react-live-clock';
-import {Inject, ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, ViewsDirective, ViewDirective} from "@syncfusion/ej2-react-schedule"
+import {Inject, ScheduleComponent, Day, Week, ViewsDirective, ViewDirective, DragAndDrop, ExcelExport} from "@syncfusion/ej2-react-schedule"
 
 export class AccountInfoDisplay extends Component {
     // Stores the state of this component and inherits properties from parent
@@ -44,7 +44,7 @@ export class StickyNotesSection extends Component {
     render() {
         return (
             <div>
-                <StickyNoteList></StickyNoteList>,
+                <StickyNoteList></StickyNoteList>
                 <NewNoteButton></NewNoteButton>
             </div>
         );
@@ -62,12 +62,12 @@ export class ScheduleUI extends Component {
     render() {
         return (
             <div className="scheduleSection">
-                <ScheduleComponent cssClass='schedule-cell-dimension' width="100%" height="720px">
+                <ScheduleComponent cssClass='excel-export' width="100%" height="720px" id='schedule'>
                     <ViewsDirective>
                         <ViewDirective option='Day'/>
                         <ViewDirective option='Week'/>
                     </ViewsDirective>
-                    <Inject services={[Day, Week]}></Inject>
+                    <Inject services={[Day, Week, DragAndDrop, ExcelExport]}></Inject>
                 </ScheduleComponent>
             </div>
         );

@@ -46,44 +46,6 @@ export class StickyNoteList extends Component {
     }
 }
 
-export class ScheduleBlock extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            passed: false
-        }
-    }
-
-    render() {
-        return (
-        <div className="schedule">
-            {this.props.text}
-        </div>);
-    }
-}
-
-export class ScheduleBlockList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            scheduleObjects: []
-        }
-    }
-
-    render() {
-        let blocks = [];
-        for(let i = 0; i < 2; i++) {
-            blocks.push(<ScheduleBlock text="We r doing this"  key={i}></ScheduleBlock>)
-        }
-        let renderDisplay = (
-            <div>
-                {blocks}
-            </div>
-        )
-        return renderDisplay;
-    }
-}
-
 export class ToggleButton extends Component {
     constructor(props){
         super(props);
