@@ -1,6 +1,8 @@
 import React, { Component } from 'react'; //import React Component
+import { LeftMenu, RightMenu, CenterMenu } from "./Menus"
+import { BrowserRouter as Router } from "react-router-dom";
 import './App.css';
-import {LeftMenu, RightMenu, CenterMenu} from "./Menus"
+
 
 export class App extends Component {
   // Initializing the state of the application
@@ -16,11 +18,11 @@ export class App extends Component {
       */
       scheduleObjects: [],
       /* 
-      // sticky note JSON
-      {
-        title: "",
-        body: ""
-      }
+        // sticky note JSON
+        {
+          title: "",
+          body: ""
+        }
       */
       stickyNoteObjects: [
         {
@@ -97,15 +99,17 @@ export class App extends Component {
     console.log(this.state.stickyNoteObjects);
     return (
       <div className="App" id="App">
-        <div className={this.state.displayMode}>
-          <LeftMenu className="menu" toggle={this.toggleDisplayMode}></LeftMenu>
-        </div>
-        <div className={this.state.displayMode}>
-          <CenterMenu className="menu"></CenterMenu>
-        </div>
-        <div className={this.state.displayMode}>
-          <RightMenu className="menu" updateSticky={this.updateStickies} stickyNotes={this.state.stickyNoteObjects}></RightMenu>
-        </div>
+        <Router>
+          <div id="leftMenu" className={this.state.displayMode}>
+            <LeftMenu className="menu" toggle={this.toggleDisplayMode}></LeftMenu>
+          </div>
+          <div id="centerMenu" className={this.state.displayMode}>
+            <CenterMenu className="menu"></CenterMenu>
+          </div>
+          <div id="rightMenu" className={this.state.displayMode}>
+            <RightMenu className="menu" updateSticky={this.updateStickies} stickyNotes={this.state.stickyNoteObjects}></RightMenu>
+          </div>
+        </Router>
       </div>
     );
   }

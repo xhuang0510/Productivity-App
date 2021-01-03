@@ -55,7 +55,7 @@ export class StickyNoteList extends Component {
             stickyNoteDisplay.push(<StickyNote key={i} remove={this.updateStickyList} title={stickyNotes[i].title} body={stickyNotes[i].body}></StickyNote>)
         }
         let renderDisplay = (
-            <div>
+            <div className="scrollable">
                 {stickyNoteDisplay}
             </div>
         )

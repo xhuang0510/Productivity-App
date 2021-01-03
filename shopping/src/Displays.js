@@ -1,8 +1,11 @@
 import React, { Component } from 'react'; //import React Component
-import "./index.css";
-import {StickyNote, StickyNoteList, NewNoteButton} from "./Components"
 import Clock from 'react-live-clock';
-import {Inject, ScheduleComponent, Day, Week, ViewsDirective, ViewDirective, DragAndDrop, ExcelExport} from "@syncfusion/ej2-react-schedule"
+import { Inject, ScheduleComponent, Day, Week, ViewsDirective, ViewDirective, DragAndDrop, ExcelExport } from "@syncfusion/ej2-react-schedule"
+import { Container, Button, Alert } from 'react-bootstrap';
+import { StickyNoteList, NewNoteButton } from "./Components"
+import "./index.css";
+
+
 
 export class AccountInfoDisplay extends Component {
     // Stores the state of this component and inherits properties from parent
@@ -18,14 +21,14 @@ export class AccountInfoDisplay extends Component {
     render() {
         console.log("rendering");
         return (
-            <div>
+            <div className="accountLayout">
                 <Clock format={'LT'} ticking={true} />
-                <div>
+                <Button>
                     Login
-                </div>
-                <div>
+                </Button>
+                <Button>
                     Logout
-                </div>
+                </Button>
             </div>
         )
     }
@@ -81,7 +84,11 @@ export class StatsUI extends Component {
     }
 
     render() {
-        return (<div>The time is: </div>);
+        return (
+            <div>
+                These are stats 
+            </div>
+        );
     }
 }
 
@@ -94,7 +101,11 @@ export class AchievementsUI extends Component {
     }
 
     render() {
-        return (<div>The time is: </div>);
+        return (
+            <div>
+                Achievements 
+            </div>
+        );
     }
 }
 
@@ -107,7 +118,11 @@ export class OptionsUI extends Component {
     }
 
     render() {
-        return (<div>The time is: </div>);
+        return (
+            <div>
+                Options 
+            </div>
+        );
     }
 }
 
@@ -120,32 +135,10 @@ export class AboutUI extends Component {
     }
 
     render() {
-        return (<div>The time is: </div>);
+        return (
+            <div>
+                About
+            </div>
+        );
     }
 }
-
-// export class ToggleButton extends Component {
-//     constructor(props){
-//         super(props);
-//         this.state={
-//             textDisplay: false,
-//         }
-//     }
-
-//     Toggled(){
-//         this.setState((currentState) => ({
-//             textDisplay: !currentState.textDisplay, 
-//         }));
-//     }
-
-//     render(){
-//         return(
-//             <div>
-//                 <button onClick={() => this.Toggled()}>
-//                   Toggle
-//                 </button>
-//                 {!this.state.textDisplay && this.props.text}
-//             </div>
-//         )
-//     }
-// }

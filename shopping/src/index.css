@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  width: 100%;
 }
 
 code {
@@ -14,13 +16,11 @@ code {
 
 .thisSection {
   color: pink;
-  /* background-image: url("./Beautiful-Norway.jpg"); */
-  /* background-repeat: no-repeat */
 }
 
-.App {
+#App {
   display: flex;
-  align-items: center;
+  align-items: top;
 }
 
 .menu {
@@ -185,4 +185,21 @@ input:checked + .round-slider:before {
 
 .round-slider:before {
   border-radius: 50%;
+}
+
+#leftMenu {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.scrollable {
+  height: 78vh;
+  overflow-y: auto;
+}
+
+.accountLayout {
+  display: flex;
+  justify-content: center;
 }

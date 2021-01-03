@@ -1,31 +1,77 @@
 import React, { Component } from 'react'; //import React Component
+import { Switch, Route, Link, useLocation } from "react-router-dom";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { Container, Button, Alert } from 'react-bootstrap';
+import { AccountInfoDisplay, StickyNotesSection, ScheduleUI, StatsUI, AchievementsUI, OptionsUI, AboutUI } from "./Displays"
 import "./index.css";
-import {AccountInfoDisplay, StickyNotesSection, ScheduleUI, StatsUI, AchievementsUI, OptionsUI, AboutUI} from "./Displays"
+
 
 export class LeftMenu extends Component {
     render() {
         return (
             <div>
-                This is Left
-                Hello this is a REALLYYYYYYYYYYYYYYYYYYY long line
-                <br></br>
-                <label class="toggle-switch">
-                    <input type="checkbox" onChange={this.props.toggle}></input>
-                    <span class="round-slider"></span>
-                </label>            
+                <h1>LOGO HERE</h1>
+                <div>
+                    <Link to="/">
+                        <Button>Schedule</Button>
+                    </Link>
+                </div>
+                <div>
+                    <Link to="/stats">
+                        <Button>Stats</Button>
+                    </Link>  
+                </div>
+                <div>
+                    <Link to="/achievements">
+                        <Button>Achievements</Button>
+                    </Link>
+                </div>
+                <div>
+                    <Link to="/options">
+                        <Button>Options</Button>
+                    </Link>
+                </div>
+                <div>
+                    <Link to="/about">
+                        <Button>About</Button>
+                    </Link>
+                </div>
+                <div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" onChange={this.props.toggle}></input>
+                        <span class="round-slider"></span>
+                    </label> 
+                </div>
             </div>
         );
     }
 }
 
-export class CenterMenu extends Component {
-    render() {
+export function CenterMenu() {
+        let location = useLocation();
         return (
-            <div className="thisSection">
-                <ScheduleUI></ScheduleUI>
-            </div>
+            <TransitionGroup>
+                <CSSTransition key={location.key} classNames="fade" timeout={300}>
+                    <Switch location={location}>
+                        <Route exact path="/">
+                            <ScheduleUI />
+                        </Route>
+                        <Route path="/stats">
+                            <StatsUI />
+                        </Route>
+                        <Route path="/achievements">
+                            <AchievementsUI />
+                        </Route>
+                        <Route path="/options">
+                            <OptionsUI />
+                        </Route>
+                        <Route path="/about">
+                            <AboutUI />
+                        </Route>
+                    </Switch>
+                </CSSTransition>
+            </TransitionGroup>
         );
-    }
 }
 
 export class RightMenu extends Component {
@@ -43,7 +89,6 @@ export class RightMenu extends Component {
                 <div className="stickyNotesSection">
                     <StickyNotesSection updateSticky={this.props.updateSticky} stickyNotes={this.props.stickyNotes}></StickyNotesSection>
                 </div>
-                Hello this is a REALLYYYYYYYYYYYYYYYYYYY long line
             </div>
         )
     }
