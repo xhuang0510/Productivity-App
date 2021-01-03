@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; //import React Component
 import "./index.css";
-import {StickyNote, StickyNoteList, ScheduleBlock, ToggleButton, NewNoteButton} from "./Components"
+import {StickyNote, StickyNoteList, NewNoteButton} from "./Components"
 import Clock from 'react-live-clock';
 import {Inject, ScheduleComponent, Day, Week, ViewsDirective, ViewDirective, DragAndDrop, ExcelExport} from "@syncfusion/ej2-react-schedule"
 
@@ -20,14 +20,12 @@ export class AccountInfoDisplay extends Component {
         return (
             <div>
                 <Clock format={'LT'} ticking={true} />
-                <br></br>
-                <header>This is a header</header>
-                <p>This is a paragraph</p>
-                <br></br>
-                <br></br>
-                <br></br>
-                <ToggleButton text="On" />
-                
+                <div>
+                    Login
+                </div>
+                <div>
+                    Logout
+                </div>
             </div>
         )
     }
@@ -44,8 +42,8 @@ export class StickyNotesSection extends Component {
     render() {
         return (
             <div>
-                <StickyNoteList></StickyNoteList>
-                <NewNoteButton></NewNoteButton>
+                <StickyNoteList updateSticky={this.props.updateSticky} stickyNotes={this.props.stickyNotes}></StickyNoteList>
+                <NewNoteButton updateSticky={this.props.updateSticky} stickyNotes={this.props.stickyNotes}></NewNoteButton>
             </div>
         );
     }
@@ -123,5 +121,31 @@ export class AboutUI extends Component {
 
     render() {
         return (<div>The time is: </div>);
+    }
+}
+
+export class ToggleButton extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            textDisplay: false,
+        }
+    }
+
+    Toggled(){
+        this.setState((currentState) => ({
+            textDisplay: !currentState.textDisplay, 
+        }));
+    }
+
+    render(){
+        return(
+            <div>
+                <button onClick={() => this.Toggled()}>
+                  Toggle
+                </button>
+                {!this.state.textDisplay && this.props.text}
+            </div>
+        )
     }
 }

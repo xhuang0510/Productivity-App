@@ -131,8 +131,12 @@ button:active {
   transform: translateY(4px);
 }
 
+.dark {
+  background-color:#2a2711;
+  color: white;
+}
 
-
-
-
-
+.light {
+  background-color: white;
+  color: black;
+}

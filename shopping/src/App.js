@@ -7,9 +7,45 @@ export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      scheduleObjects: [],
-      stickyNoteObjects: [],
+      /*
+        {
+          startTime: something,
+          endTime: something,
 
+        }
+      */
+      scheduleObjects: [],
+      /* 
+      // sticky note JSON
+      {
+        title: "",
+        body: ""
+      }
+      */
+      stickyNoteObjects: [
+        {
+          title: "Hello",
+          body: "World!"
+        },
+        {
+          title: "Tomorrow",
+          body: "rest day"
+        }
+      ],
+      /*
+        {
+          readingTime: 90,
+          mathTime: 60,
+          ...
+        }
+      */
+     // Average math time: 45 min
+     // On average personal math time: 35 min
+     // Set new personalized time for our algorithm
+      personalStats: [
+
+      ],
+      displayMode: "light"
     }
   }
 
@@ -26,6 +62,25 @@ export class App extends Component {
     )
   }
 
+  updateStickies = (stickyArray) => {
+    this.setState({
+      stickyNoteObjects: stickyArray
+    })
+  }
+
+  toggleDisplayMode = () => {
+    let mode = ""
+    if(this.state.displayMode == "light") {
+      mode = "dark";
+    } else {
+      mode = "light"
+    }
+    this.setState({
+      displayMode: mode
+    });
+    console.log(this.state.displayMode);
+  } 
+
   // Resets display state to default if window is resized
   componentDidMount() {
     window.addEventListener('resize', this.render());
@@ -39,11 +94,18 @@ export class App extends Component {
   // Renders the application
   render() {
     console.log("Rendering...");
+    console.log(this.state.stickyNoteObjects);
     return (
       <div className="App" id="App">
-        <LeftMenu className="menu"></LeftMenu>
-        <CenterMenu className="menu"></CenterMenu>
-        <RightMenu className="menu"></RightMenu>
+        <div className={this.state.displayMode}>
+          <LeftMenu className="menu" toggle={this.toggleDisplayMode}></LeftMenu>
+        </div>
+        <div className={this.state.displayMode}>
+          <CenterMenu className="menu"></CenterMenu>
+        </div>
+        <div className={this.state.displayMode}>
+          <RightMenu className="menu" updateSticky={this.updateStickies} stickyNotes={this.state.stickyNoteObjects}></RightMenu>
+        </div>
       </div>
     );
   }

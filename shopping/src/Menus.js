@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; //import React Component
 import "./index.css";
-import {AccountInfoDisplay, StickyNotesSection, ScheduleUI, StatsUI, AchievementsUI, OptionsUI, AboutUI} from "./Displays"
+import {AccountInfoDisplay, StickyNotesSection, ScheduleUI, StatsUI, AchievementsUI, OptionsUI, AboutUI, ToggleButton} from "./Displays"
 
 export class LeftMenu extends Component {
     render() {
@@ -8,6 +8,9 @@ export class LeftMenu extends Component {
             <div>
                 This is Left
                 Hello this is a REALLYYYYYYYYYYYYYYYYYYY long line
+                <br></br>
+                <button onClick={this.props.toggle}>Light/Dark</button>
+                <ToggleButton text="Dark/Light" onClick={this.props.toggle}></ToggleButton>
             </div>
         );
     }
@@ -35,7 +38,9 @@ export class RightMenu extends Component {
         return (
             <div>
                 <AccountInfoDisplay></AccountInfoDisplay>
-                <StickyNotesSection></StickyNotesSection>
+                <div className="stickyNotesSection">
+                    <StickyNotesSection updateSticky={this.props.updateSticky} stickyNotes={this.props.stickyNotes}></StickyNotesSection>
+                </div>
                 Hello this is a REALLYYYYYYYYYYYYYYYYYYY long line
             </div>
         )
