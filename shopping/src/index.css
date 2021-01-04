@@ -57,6 +57,28 @@ code {
 .note-header {
   padding: 10px 15px 0;
 }
+
+.note-pin {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  line-height: 24px;
+  text-align: center;
+  transition: all 0.1s;
+  background-color:#eb4034;
+  border: none;
+  outline: 0;
+} 
+
+.note-pin{
+  float: right
+}
+
+.note-pin:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 .note-close {
   display: inline-block;
   width: 24px;
@@ -161,7 +183,7 @@ code {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color:yellow;
+  background-color:white;
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -186,6 +208,17 @@ input:checked + .round-slider:before {
 
 .round-slider:before {
   border-radius: 50%;
+}
+
+.sun-img {
+  color: yellow;
+  float: left;
+  padding: 7px 6px;
+}
+.moon-img {
+  color: white;
+  float: right;
+  padding: 7px 6px;
 }
 
 #leftMenu {
