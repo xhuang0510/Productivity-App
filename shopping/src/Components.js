@@ -27,9 +27,10 @@ export class StickyNote extends Component {
                                 <i class="fas fa-thumbtack"></i>
                             </button>
                         </div>
-                        <div className = 'note-title' contentEditable suppressContentEditableWarning={true}>
+                        <input className = 'note-title'>
+                            <input type="text" id="name" name="name" value="Jonny Dough" />
                             {this.props.title}
-                        </div>
+                        </input>
                         <div className = 'note-body' contentEditable suppressContentEditableWarning={true}>
                             {this.props.body}
                         </div>
@@ -48,7 +49,8 @@ export class StickyNoteList extends Component {
 
     updateStickyList = (index) => {
         let newArray = this.props.stickyNotes;
-        newArray.splice(index, 1)
+        console.log('index is: ' + index.key);
+        newArray.splice(index.key, 1);
         this.props.updateSticky(newArray);
     }
 

@@ -26,12 +26,20 @@ export class App extends Component {
       */
       stickyNoteObjects: [
         {
-          title: "Hello",
-          body: "World!"
+          title: "Note 1",
+          body: "This is Note 1!"
         },
         {
-          title: "Tomorrow",
-          body: "rest day"
+          title: "Note 2",
+          body: "This is Note 2!"
+        },
+        {
+          title: "Note 3",
+          body: "This is Note 3!"
+        },
+        {
+          title: "Note 4",
+          body: "This is Note 4!"
         }
       ],
       /*

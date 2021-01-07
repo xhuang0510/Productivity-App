@@ -47,7 +47,7 @@ code {
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
   transition: all 0.5s;
   cursor: pointer;
-  font-family: 'Times New Roman', cursive;
+  font-family: 'Arial Nova';
 }
 
 .note:hover {
@@ -102,10 +102,10 @@ code {
 
 .note-title {
   outline: 0;
-  font-size: 24px;
+  font-size: 20px;
   padding: 0px 10px;
   text-align: left;
-  font-weight: bold;
+  font-family: 'Arial black';
 }
 
 .note-body {
@@ -131,6 +131,7 @@ code {
   width: 288px;
   margin: 10px 10px 15px;
   transition: all 0.5s;
+  font-family: 'Arial black';
 }
 
 .new-note-button:hover {background-color: #d6382d}
