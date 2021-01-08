@@ -1,11 +1,9 @@
 import React, { Component } from 'react'; //import React Component
 import Clock from 'react-live-clock';
-import { Inject, ScheduleComponent, Day, Week, ViewsDirective, ViewDirective, DragAndDrop, ExcelExport } from "@syncfusion/ej2-react-schedule"
+import { Inject, ScheduleComponent, Day, Week, ViewsDirective, ViewDirective, DragAndDrop, ExcelExport, Resize } from "@syncfusion/ej2-react-schedule"
 import { Button } from 'react-bootstrap';
 import { StickyNoteList, NewNoteButton } from "./Components"
 import "./index.css";
-
-
 
 export class AccountInfoDisplay extends Component {
     // Stores the state of this component and inherits properties from parent
@@ -19,7 +17,6 @@ export class AccountInfoDisplay extends Component {
     // Renders the component
     // Whenever you change state, the component re-renders
     render() {
-        console.log("rendering");
         return (
             <div className="accountLayout">
                 <Clock format={'LT'} ticking={true} />
@@ -55,20 +52,53 @@ export class StickyNotesSection extends Component {
 export class ScheduleUI extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            
+        this.mounted = false;
+        this.interval = setInterval(() => {
+            if(this.mounted) {
+                this.saveData();
+            }
+        }, 60000);
+    }
+
+    componentDidMount() {
+        this.mounted = true;
+    }
+
+    componentWillUnmount() {
+        this.mounted = false;
+        clearInterval(this.interval);
+    }
+
+    onActionBegin(args) {
+        if (args.requestType === 'toolbarItemRendering') {
+            let exportItem = {
+                align: 'Right', showTextOn: 'Both', prefixIcon: 'e-icon-schedule-excel-export',
+                text: 'Excel Export', cssClass: 'e-excel-export', click: this.onExportClick.bind(this)
+            };
+            args.items.push(exportItem);
         }
+    }
+
+    onExportClick() {
+        this.scheduleObj.exportToExcel();
+    }
+
+    saveData = () => {
+        let newData = this.scheduleObj.dataModule.dataManager.dataSource.json;
+        this.props.update(newData);
+        console.log("Data saved!");
     }
 
     render() {
         return (
             <div className="scheduleSection">
-                <ScheduleComponent cssClass='excel-export' width="100%" height="720px" id='schedule'>
+                <ScheduleComponent cssClass='excel-export' width="100%" height="720px" ref={t => this.scheduleObj = t} id='schedule'
+                                    actionBegin={this.onActionBegin.bind(this)} eventSettings={{ dataSource: this.props.schedule }}>
                     <ViewsDirective>
                         <ViewDirective option='Day'/>
                         <ViewDirective option='Week'/>
                     </ViewsDirective>
-                    <Inject services={[Day, Week, DragAndDrop, ExcelExport]}></Inject>
+                    <Inject services={[Day, Week, DragAndDrop, ExcelExport, Resize]}></Inject>
                 </ScheduleComponent>
             </div>
         );

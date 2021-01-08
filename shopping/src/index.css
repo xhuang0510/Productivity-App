@@ -222,13 +222,6 @@ input:checked + .round-slider:before {
   padding: 7px 6px;
 }
 
-#leftMenu {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  padding: 10px;
-}
-
 .scrollable {
   height: 80vh;
   overflow-y: overlay;
@@ -256,4 +249,16 @@ input:checked + .round-slider:before {
 ::-webkit-scrollbar-thumb:active {
   background: #696767;
   border-radius: 10px;
+}
+
+#centerMenu {
+  width: 145vh;
+}
+
+#leftMenu {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 10px;
+  width: 23vh;
 }

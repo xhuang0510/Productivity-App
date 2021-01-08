@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; //import React Component
-import { Switch, Route, Link, useLocation } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Button } from 'react-bootstrap';
 import { AccountInfoDisplay, StickyNotesSection, ScheduleUI, StatsUI, AchievementsUI, OptionsUI, AboutUI } from "./Displays"
@@ -57,14 +57,14 @@ export class LeftMenu extends Component {
     }
 }
 
-export function CenterMenu() {
-        let location = useLocation();
+export class CenterMenu extends Component {
+    render() {
         return (
             <TransitionGroup>
-                <CSSTransition key={location.key} classNames="fade" timeout={300}>
-                    <Switch location={location}>
+                <CSSTransition classNames="fade" timeout={300}>
+                    <Switch>
                         <Route exact path="/">
-                            <ScheduleUI />
+                            <ScheduleUI schedule={this.props.schedule} update={this.props.updateSchedule}/>
                         </Route>
                         <Route path="/stats">
                             <StatsUI />
@@ -82,6 +82,7 @@ export function CenterMenu() {
                 </CSSTransition>
             </TransitionGroup>
         );
+    }
 }
 
 export class RightMenu extends Component {

@@ -16,7 +16,30 @@ export class App extends Component {
 
         }
       */
-      scheduleObjects: [],
+      scheduleObjects: [
+        {
+          Id: 1,
+          Subject: 'Explosion of Betelgeuse Star',
+          StartTime: new Date(2021, 0, 4, 9, 30),
+          EndTime: new Date(2021, 0, 4, 11, 0)
+        }, 
+        {
+          Id: 2,
+          Subject: 'Thule Air Crash Report',
+          StartTime: new Date(2021, 0, 5, 12, 0),
+          EndTime: new Date(2021, 0, 5, 14, 0)
+        }, {
+          Id: 3,
+          Subject: 'Blue Moon Eclipse',
+          StartTime: new Date(2021, 0, 6, 9, 30),
+          EndTime: new Date(2021, 0, 6, 11, 0)
+        }, {
+          Id: 4,
+          Subject: 'Meteor Showers in 2018',
+          StartTime: new Date(2021, 0, 8, 13, 0),
+          EndTime: new Date(2021, 0, 8, 14, 30)
+        }
+      ],
       /* 
         // sticky note JSON
         {
@@ -64,12 +87,10 @@ export class App extends Component {
     console.log("Hello World!");
   }
 
-  updateState = (state) => {
-    this.setState(
-      () => {
-        return state;
-      }
-    )
+  updateSchedule = (scheduleArray) => {
+    this.setState({
+      scheduleObjects: scheduleArray
+    })
   }
 
   updateStickies = (stickyArray) => {
@@ -103,8 +124,7 @@ export class App extends Component {
 
   // Renders the application
   render() {
-    console.log("Rendering...");
-    console.log(this.state.stickyNoteObjects);
+    console.log("Rendering App...");
     return (
       <div className="App" id="App">
         <Router>
@@ -112,7 +132,7 @@ export class App extends Component {
             <LeftMenu className="menu" toggle={this.toggleDisplayMode}></LeftMenu>
           </div>
           <div id="centerMenu" className={this.state.displayMode}>
-            <CenterMenu className="menu"></CenterMenu>
+            <CenterMenu className="menu" updateSchedule={this.updateSchedule} schedule={this.state.scheduleObjects}></CenterMenu>
           </div>
           <div id="rightMenu" className={this.state.displayMode}>
             <RightMenu className="menu" updateSticky={this.updateStickies} stickyNotes={this.state.stickyNoteObjects}></RightMenu>

@@ -8,7 +8,6 @@ export class StickyNote extends Component {
         this.state = {
             inputValue: this.props.title
         }
-        this.titleBar = React.createRef();
     }
 
     remove = () => {
@@ -39,7 +38,7 @@ export class StickyNote extends Component {
                                 <i className="fas fa-thumbtack"></i>
                             </button>
                         </div>
-                        <input ref={this.titleBar} value={this.state.inputValue} className='note-title' contentEditable suppressContentEditableWarning={true} onInput={this.edit} />
+                        <input value={this.state.inputValue} className='note-title' contentEditable suppressContentEditableWarning={true} onInput={this.edit} />
                         <div className='note-body' contentEditable suppressContentEditableWarning={true} onInput={this.edit}>
                             {this.props.body}
                         </div>
