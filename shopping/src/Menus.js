@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; //import React Component
 import { Switch, Route, Link, useLocation } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { Container, Button, Alert } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { AccountInfoDisplay, StickyNotesSection, ScheduleUI, StatsUI, AchievementsUI, OptionsUI, AboutUI } from "./Displays"
 import "./index.css";
 

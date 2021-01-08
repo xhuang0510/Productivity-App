@@ -230,11 +230,30 @@ input:checked + .round-slider:before {
 }
 
 .scrollable {
-  height: 78vh;
-  overflow-y: auto;
+  height: 80vh;
+  overflow-y: overlay;
 }
 
 .accountLayout {
   display: flex;
   justify-content: center;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cccccc;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a7a5a3;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #696767;
+  border-radius: 10px;
 }

@@ -80,7 +80,7 @@ export class App extends Component {
 
   toggleDisplayMode = () => {
     let mode = ""
-    if(this.state.displayMode == "light") {
+    if(this.state.displayMode === "light") {
       mode = "dark";
     } else {
       mode = "light"

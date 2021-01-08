@@ -3,12 +3,24 @@ import "./index.css";
 
 
 export class StickyNote extends Component {
-    remove = () => {
-        this.props.remove(this.props.key);
+    constructor(props) {
+        super(props);
+        this.state = {
+            inputValue: this.props.title
+        }
+        this.titleBar = React.createRef();
     }
 
-    edit = () => {
+    remove = () => {
+        this.props.remove(this.props.keyNum);
+    }
 
+    edit = (textbox) => {
+        this.setState({
+            inputValue: textbox.target.value
+        }, () => {
+            this.props.update(this.props.keyNum, this.state.inputValue);
+        });
     }
 
     render() {
@@ -18,20 +30,17 @@ export class StickyNote extends Component {
                 <div className ='sticky-notes'>
                     <div className = 'note'>
                         <div className ='note-header'>
-                            <button className = 'note-close' onClick={this.props.remove}>
+                            <button className = 'note-close' onClick={this.remove}>
                                 {/* x button  */}
-                                <i class="fas fa-times"></i>
+                                <i className="fas fa-times"></i>
                             </button>
                             <button className = 'note-pin'>
                                 {/* pin button */}
-                                <i class="fas fa-thumbtack"></i>
+                                <i className="fas fa-thumbtack"></i>
                             </button>
                         </div>
-                        <input className = 'note-title'>
-                            <input type="text" id="name" name="name" value="Jonny Dough" />
-                            {this.props.title}
-                        </input>
-                        <div className = 'note-body' contentEditable suppressContentEditableWarning={true}>
+                        <input ref={this.titleBar} value={this.state.inputValue} className='note-title' contentEditable suppressContentEditableWarning={true} onInput={this.edit} />
+                        <div className='note-body' contentEditable suppressContentEditableWarning={true} onInput={this.edit}>
                             {this.props.body}
                         </div>
                     </div>
@@ -43,14 +52,18 @@ export class StickyNote extends Component {
 
 // You can do an array of elements to render them all at once
 export class StickyNoteList extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     updateStickyList = (index) => {
         let newArray = this.props.stickyNotes;
-        console.log('index is: ' + index.key);
-        newArray.splice(index.key, 1);
+        newArray.splice(index, 1);
+        this.props.updateSticky(newArray);
+    }
+
+    updateStickyText = (index, title) => {
+        let newArray = this.props.stickyNotes;
+        newArray[index] = {
+            title: title,
+            body: newArray[index].body
+        };
         this.props.updateSticky(newArray);
     }
 
@@ -58,7 +71,8 @@ export class StickyNoteList extends Component {
         let stickyNotes = this.props.stickyNotes;
         let stickyNoteDisplay = [];
         for(let i = 0; i < stickyNotes.length; i++) {
-            stickyNoteDisplay.push(<StickyNote key={i} remove={this.updateStickyList} title={stickyNotes[i].title} body={stickyNotes[i].body}></StickyNote>)
+            stickyNoteDisplay.push(<StickyNote key={i} keyNum={i} remove={this.updateStickyList} 
+                update={this.updateStickyText} title={stickyNotes[i].title} body={stickyNotes[i].body}></StickyNote>)
         }
         let renderDisplay = (
             <div className="scrollable">
