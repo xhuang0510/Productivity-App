@@ -6,20 +6,39 @@ export class StickyNote extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            inputValue: this.props.title
+            inputTitle: this.props.title,
+            inputBody: this.props.body,
+            isPinned: false
         }
     }
 
     remove = () => {
-        this.props.remove(this.props.keyNum);
+        this.props.remove(this.props.keyNum, this.state.isPinned);
     }
 
-    edit = (textbox) => {
+    editTitle = (textbox) => {
         this.setState({
-            inputValue: textbox.target.value
+            inputTitle: textbox.target.value
         }, () => {
-            this.props.update(this.props.keyNum, this.state.inputValue);
+            this.props.updateTitle(this.props.keyNum, this.state.inputTitle, this.state.isPinned);
         });
+    }
+
+    editBody = (textbox) => {
+        this.setState({
+            inputBody: textbox.target.value
+        }, () => {
+            this.props.updateBody(this.props.keyNum, this.state.inputBody, this.state.isPinned);
+        });
+    }
+
+    pin = () => {
+        if (this.isPinned) {
+            this.isPinned = false
+        } else {
+            this.isPinned = true
+        }
+        this.props.pin(this.props.keyNum, this.isPinned)
     }
 
     render() {
@@ -33,15 +52,13 @@ export class StickyNote extends Component {
                                 {/* x button  */}
                                 <i className="fas fa-times"></i>
                             </button>
-                            <button className = 'note-pin'>
+                            <button className = 'note-pin' onClick={this.pin}>
                                 {/* pin button */}
                                 <i className="fas fa-thumbtack"></i>
                             </button>
                         </div>
-                        <input value={this.state.inputValue} className='note-title' contentEditable suppressContentEditableWarning={true} onInput={this.edit} />
-                        <div className='note-body' contentEditable suppressContentEditableWarning={true} onInput={this.edit}>
-                            {this.props.body}
-                        </div>
+                        <input ref={this.titleBar} value={this.state.inputTitle} className='note-title' contentEditable suppressContentEditableWarning={true} onInput={this.editTitle} size={50}/>
+                        <textarea ref={this.bodyBar} value={this.state.inputBody} className='note-body' contentEditable suppressContentEditableWarning={true} onInput={this.editBody}/>
                     </div>
                 </div>
             </div>
@@ -51,27 +68,104 @@ export class StickyNote extends Component {
 
 // You can do an array of elements to render them all at once
 export class StickyNoteList extends Component {
-    updateStickyList = (index) => {
-        let newArray = this.props.stickyNotes;
-        newArray.splice(index, 1);
-        this.props.updateSticky(newArray);
+    updateStickyList = (index, isPinned) => {
+        let newArray
+        if (isPinned) {
+            newArray = this.props.pinnedStickyNotes;
+            newArray.splice(index, 1);
+            this.props.updatePinnedStickies(newArray);
+        } else {
+            newArray = this.props.stickyNotes;
+            newArray.splice(index, 1);
+            this.props.updateSticky(newArray);
+        }
+        
     }
 
-    updateStickyText = (index, title) => {
-        let newArray = this.props.stickyNotes;
-        newArray[index] = {
-            title: title,
-            body: newArray[index].body
-        };
-        this.props.updateSticky(newArray);
+    updateStickyTitle = (index, text, isPinned) => {
+        let newArray
+        if (isPinned) {
+            newArray = this.props.pinnedStickyNotes;
+            newArray[index] = {
+                title: text,
+                body: newArray[index].body
+            };
+            this.props.updatePinnedStickies(newArray);
+        } else {
+            newArray = this.props.stickyNotes;
+            newArray[index] = {
+                title: text,
+                body: newArray[index].body
+            };
+            this.props.updateSticky(newArray);
+        }
+        
+    }
+
+    updateStickyBody = (index, text, isPinned) => {
+        let newArray
+        if (isPinned) {
+            newArray = this.props.pinnedStickyNotes;
+            newArray[index] = {
+                title: newArray[index].title,
+                body: text
+            };
+            this.props.updatePinnedStickies(newArray);
+        } else {
+            newArray = this.props.stickyNotes;
+            newArray[index] = {
+                title: newArray[index].title,
+                body: text
+            };
+            this.props.updateSticky(newArray);
+        }
+        
+    }
+
+    pin = (index, isPinned) => {
+        console.log(this.props.pinnedStickyNotes);
+        let pinned = this.props.pinnedStickyNotes;
+        let notPinned = this.props.stickyNotes;
+        if (isPinned) {
+            let tempSticky = notPinned.splice(index, 1)
+            pinned.push(tempSticky)
+        } else {
+            let tempSticky = pinned.splice(index, 1)
+            notPinned.push(tempSticky)
+        }
+        this.props.updatePinnedStickies(pinned);
+        this.props.updateSticky(notPinned);
     }
 
     render() {
         let stickyNotes = this.props.stickyNotes;
+        let pinnedStickyNotes = this.props.pinnedStickyNotes;
         let stickyNoteDisplay = [];
+        for(let i = 0; i < pinnedStickyNotes.length; i++) {
+            stickyNoteDisplay.push(
+                <StickyNote 
+                    key={i} 
+                    keyNum={i} 
+                    remove={this.updateStickyList} 
+                    updateTitle={this.updateStickyTitle} 
+                    updateBody={this.updateStickyBody} 
+                    title={pinnedStickyNotes[i].title} 
+                    body={pinnedStickyNotes[i].body}
+                    pin={this.pin}>
+                </StickyNote>)
+        }
         for(let i = 0; i < stickyNotes.length; i++) {
-            stickyNoteDisplay.push(<StickyNote key={i} keyNum={i} remove={this.updateStickyList} 
-                update={this.updateStickyText} title={stickyNotes[i].title} body={stickyNotes[i].body}></StickyNote>)
+            stickyNoteDisplay.push(
+                <StickyNote 
+                    key={i+100} 
+                    keyNum={i} 
+                    remove={this.updateStickyList} 
+                    updateTitle={this.updateStickyTitle} 
+                    updateBody={this.updateStickyBody} 
+                    title={stickyNotes[i].title} 
+                    body={stickyNotes[i].body}
+                    pin={this.pin}>
+                </StickyNote>)
         }
         let renderDisplay = (
             <div className="scrollable">

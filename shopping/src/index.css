@@ -105,7 +105,16 @@ code {
   font-size: 20px;
   padding: 0px 10px;
   text-align: left;
+  float: left;
   font-family: 'Arial black';
+  background-color:rgba(0, 0, 0, 0);
+  color:black;
+  border: none; 
+  outline:none;
+  height:30px;
+  transition:height 1s;
+  -webkit-transition:height 1s;
+  max-width: 288px;
 }
 
 .note-body {
@@ -113,6 +122,32 @@ code {
   font-size: 16px;
   padding: 0px 10px;
   text-align: left;
+  float: left;
+  background-color:rgba(0, 0, 0, 0);
+  color:black;
+  border: none; 
+  outline:none; 
+  height:30px;
+  transition:height 0.1s;
+  -webkit-transition:height 0.1s;
+  width: 270px;
+  resize: vertical;
+  overflow: overlay;
+}
+
+.note-body::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.note-body::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.note-body::-webkit-scrollbar {
+  width: 0px;
+  background-color: transparent;
 }
 
 .new-note-button {
