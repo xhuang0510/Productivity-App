@@ -17,14 +17,8 @@ export class App extends Component {
         }
       */
       scheduleObjects: [],
-      /* 
-        // sticky note JSON
-        {
-          title: "",
-          body: ""
-        }
-      */
-      stickyNoteObjects: [
+      pinnedStickyNotes: [],
+      stickyNotesList: [
         {
           title: "Note 1",
           body: "This is Note 1!"
@@ -78,6 +72,12 @@ export class App extends Component {
     })
   }
 
+  updatePinnedStickies = (pinnedStickyArray) => {
+    this.setState({
+      pinnedStickyNotes: pinnedStickyArray
+    })
+  }
+
   toggleDisplayMode = () => {
     let mode = ""
     if(this.state.displayMode === "light") {
@@ -115,7 +115,13 @@ export class App extends Component {
             <CenterMenu className="menu"></CenterMenu>
           </div>
           <div id="rightMenu" className={this.state.displayMode}>
-            <RightMenu className="menu" updateSticky={this.updateStickies} stickyNotes={this.state.stickyNoteObjects}></RightMenu>
+            <RightMenu 
+              className="menu" 
+              updateSticky={this.updateStickies} 
+              stickyNotes={this.state.stickyNotesList} 
+              pinnedStickyNotes={this.state.pinnedStickyNotes}
+              updatePinnedStickies={this.updatePinnedStickies}>
+            </RightMenu>
           </div>
         </Router>
       </div>
