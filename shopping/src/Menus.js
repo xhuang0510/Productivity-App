@@ -61,7 +61,7 @@ export class CenterMenu extends Component {
     render() {
         return (
             <TransitionGroup>
-                <CSSTransition classNames="fade" timeout={300}>
+                <CSSTransition classNames="fade" timeout={150}>
                     <Switch>
                         <Route exact path="/">
                             <ScheduleUI schedule={this.props.schedule} update={this.props.updateSchedule}/>
