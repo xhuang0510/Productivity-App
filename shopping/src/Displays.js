@@ -100,7 +100,7 @@ export class ScheduleUI extends Component {
                 <div className="loading">
                     <i className="fa fa-spinner fa-spin" aria-hidden="true"></i>
                 </div>
-                <ScheduleComponent cssClass='excel-export' width="100%" height="720px" ref={t => this.scheduleObj = t} id='schedule'
+                <ScheduleComponent cssClass='excel-export' width="100%" height="100vh" ref={t => this.scheduleObj = t} id='schedule'
                                     actionBegin={this.onActionBegin.bind(this)} eventSettings={{ dataSource: this.props.schedule }}>
                     <ViewsDirective>
                         <ViewDirective option='Day'/>
