@@ -3,26 +3,62 @@ import "./index.css";
 
 
 export class StickyNote extends Component {
-    onClick = () => {
-        console.log('Do Things Here')
+    constructor(props) {
+        super(props);
+        this.state = {
+            inputTitle: this.props.title,
+            inputBody: this.props.body,
+            isPinned: false
+        }
     }
+
+    remove = () => {
+        this.props.remove(this.props.keyNum, this.state.isPinned);
+    }
+
+    editTitle = (textbox) => {
+        this.setState({
+            inputTitle: textbox.target.value
+        }, () => {
+            this.props.updateTitle(this.props.keyNum, this.state.inputTitle, this.state.isPinned);
+        });
+    }
+
+    editBody = (textbox) => {
+        this.setState({
+            inputBody: textbox.target.value
+        }, () => {
+            this.props.updateBody(this.props.keyNum, this.state.inputBody, this.state.isPinned);
+        });
+    }
+
+    pin = () => {
+        if (this.isPinned) {
+            this.isPinned = false
+        } else {
+            this.isPinned = true
+        }
+        this.props.pin(this.props.keyNum, this.isPinned)
+    }
+
     render() {
         return (
             <div id ='notesWrapper'>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-                <div class ='sticky-notes'>
-                    <div class = 'note'>
-                        <div class ='note-header'>
-                            <button class = 'note-close' onClick={this.onClick}>
-                                <i class="fas fa-times"></i>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossOrigin="anonymous" />
+                <div className ='sticky-notes'>
+                    <div className = 'note'>
+                        <div className ='note-header'>
+                            <button className = 'note-close' onClick={this.remove}>
+                                {/* x button  */}
+                                <i className="fas fa-times"></i>
+                            </button>
+                            <button className = 'note-pin' onClick={this.pin}>
+                                {/* pin button */}
+                                <i className="fas fa-thumbtack"></i>
                             </button>
                         </div>
-                        <div class = 'note-title' contentEditable suppressContentEditableWarning={true}>
-                            Title
-                        </div>
-                        <div class = 'note-body' contentEditable suppressContentEditableWarning={true}>
-                            Body
-                        </div>
+                        <input ref={this.titleBar} value={this.state.inputTitle} className='note-title' contentEditable suppressContentEditableWarning={true} onInput={this.editTitle} size={50}/>
+                        <textarea ref={this.bodyBar} value={this.state.inputBody} className='note-body' contentEditable suppressContentEditableWarning={true} onInput={this.editBody}/>
                     </div>
                 </div>
             </div>
@@ -32,59 +68,132 @@ export class StickyNote extends Component {
 
 // You can do an array of elements to render them all at once
 export class StickyNoteList extends Component {
+    updateStickyList = (index, isPinned) => {
+        let newArray
+        if (isPinned) {
+            newArray = this.props.pinnedStickyNotes;
+            newArray.splice(index, 1);
+            this.props.updatePinnedStickies(newArray);
+        } else {
+            newArray = this.props.stickyNotes;
+            newArray.splice(index, 1);
+            this.props.updateSticky(newArray);
+        }
+        
+    }
+
+    updateStickyTitle = (index, text, isPinned) => {
+        let newArray
+        if (isPinned) {
+            newArray = this.props.pinnedStickyNotes;
+            newArray[index] = {
+                title: text,
+                body: newArray[index].body
+            };
+            this.props.updatePinnedStickies(newArray);
+        } else {
+            newArray = this.props.stickyNotes;
+            newArray[index] = {
+                title: text,
+                body: newArray[index].body
+            };
+            this.props.updateSticky(newArray);
+        }
+        
+    }
+
+    updateStickyBody = (index, text, isPinned) => {
+        let newArray
+        if (isPinned) {
+            newArray = this.props.pinnedStickyNotes;
+            newArray[index] = {
+                title: newArray[index].title,
+                body: text
+            };
+            this.props.updatePinnedStickies(newArray);
+        } else {
+            newArray = this.props.stickyNotes;
+            newArray[index] = {
+                title: newArray[index].title,
+                body: text
+            };
+            this.props.updateSticky(newArray);
+        }
+        
+    }
+
+    pin = (index, isPinned) => {
+        console.log(this.props.pinnedStickyNotes);
+        let pinned = this.props.pinnedStickyNotes;
+        let notPinned = this.props.stickyNotes;
+        if (isPinned) {
+            let tempSticky = notPinned.splice(index, 1)
+            pinned.push(tempSticky)
+        } else {
+            let tempSticky = pinned.splice(index, 1)
+            notPinned.push(tempSticky)
+        }
+        this.props.updatePinnedStickies(pinned);
+        this.props.updateSticky(notPinned);
+    }
+
     render() {
-        let stickyNotes = [];
-        for(let i = 0; i < 2; i++) {
-            stickyNotes.push(<StickyNote key={i}></StickyNote>)
+        let stickyNotes = this.props.stickyNotes;
+        let pinnedStickyNotes = this.props.pinnedStickyNotes;
+        let stickyNoteDisplay = [];
+        for(let i = 0; i < pinnedStickyNotes.length; i++) {
+            stickyNoteDisplay.push(
+                <StickyNote 
+                    key={i} 
+                    keyNum={i} 
+                    remove={this.updateStickyList} 
+                    updateTitle={this.updateStickyTitle} 
+                    updateBody={this.updateStickyBody} 
+                    title={pinnedStickyNotes[i].title} 
+                    body={pinnedStickyNotes[i].body}
+                    pin={this.pin}>
+                </StickyNote>)
+        }
+        for(let i = 0; i < stickyNotes.length; i++) {
+            stickyNoteDisplay.push(
+                <StickyNote 
+                    key={i+100} 
+                    keyNum={i} 
+                    remove={this.updateStickyList} 
+                    updateTitle={this.updateStickyTitle} 
+                    updateBody={this.updateStickyBody} 
+                    title={stickyNotes[i].title} 
+                    body={stickyNotes[i].body}
+                    pin={this.pin}>
+                </StickyNote>)
         }
         let renderDisplay = (
-            <div>
-                {stickyNotes}
+            <div className="scrollable">
+                {stickyNoteDisplay}
             </div>
         )
         return renderDisplay;
     }
 }
 
-export class ToggleButton extends Component {
-    constructor(props){
-        super(props);
-        this.state={
-            textDisplay: false,
-        }
-    }
-
-    Toggled(){
-        this.setState((currentState) => ({
-            textDisplay: !currentState.textDisplay, 
-        }));
-    }
-
-    render(){
-        return(
-            <div>
-                <button onClick={() => this.Toggled()}>
-                  Toggle
-                </button>
-                {!this.state.textDisplay && this.props.text}
-            </div>
-        )
-    }
-}
-
 export class NewNoteButton extends Component {
-    onClick = () => {
-        console.log('I am a new Note Button!')
+    add = () => {
+        let array = this.props.stickyNotes;
+        array.push({
+            title: "Title",
+            body: "Text goes here"
+        });
+        this.props.updateSticky(array);
     }
 
     render(){
         return(
             <div>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-                <button class='new-note-button'onClick={this.onClick}>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossOrigin="anonymous" />
+                <button className='new-note-button' onClick={this.add}>
                     New Note
                     <br></br>
-                    <i class="fas fa-plus"></i>
+                    <i className="fas fa-plus"></i>
                 </button>
             </div>
         )

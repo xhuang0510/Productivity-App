@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  width: 100%;
 }
 
 code {
@@ -12,42 +14,21 @@ code {
     monospace;
 }
 
-/* #searchButton {
-  color: lightblue;
-  background-color: black;
-} */
-
-/* button {
-  color: yellow;
-  background-color: brown;
-}
-
-button:hover {
-  color: white;
-  background-color: black;
-}
-
-button:active {
-  color: purple;
-  background-color:white;
-} */
-
 .thisSection {
   color: pink;
-  /* background-image: url("./Beautiful-Norway.jpg"); */
-  /* background-repeat: no-repeat */
 }
 
-.App {
+#App {
   display: flex;
-  align-items: center;
+  align-items: top;
 }
 
 .menu {
   padding-left: 100px;
 }
+
 #notesWrapper {
-  padding: 50px
+  padding: 10px
 }
 
 .sticky-notes {
@@ -58,23 +39,46 @@ button:active {
 }
 
 .note {
-  background-color: #f0c806;
+  background-color: #eb4034;
   border-radius: 8px;
   width: 288px;
-  margin: 0 10px 20px;
+  padding-bottom: 25px;
+  margin: 0 10px 5px;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
   transition: all 0.5s;
   cursor: pointer;
-  font-family: 'Times New Roman', cursive;
+  font-family: 'Arial Nova';
 }
 
 .note:hover {
-  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .note-header {
-  padding: 10px 16px 0;
+  padding: 10px 15px 0;
 }
+
+.note-pin {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  line-height: 24px;
+  text-align: center;
+  transition: all 0.1s;
+  background-color:#eb4034;
+  border: none;
+  outline: 0;
+} 
+
+.note-pin{
+  float: right
+}
+
+.note-pin:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 .note-close {
   display: inline-block;
   width: 24px;
@@ -82,9 +86,10 @@ button:active {
   border-radius: 50%;
   line-height: 24px;
   text-align: center;
-  transition: all 0.3s;
-  background-color: #f0c806;
-  border: none
+  transition: all 0.1s;
+  background-color:#eb4034;
+  border: none;
+  outline: 0;
 } 
 
 .note-close{
@@ -97,42 +102,198 @@ button:active {
 
 .note-title {
   outline: 0;
-  font-size: 24px;
-  padding: 10px 16px;
-  font-weight: bold;
+  font-size: 20px;
+  padding: 0px 10px;
+  text-align: left;
+  float: left;
+  font-family: 'Arial black';
+  background-color:rgba(0, 0, 0, 0);
+  color:black;
+  border: none; 
+  outline:none;
+  height:30px;
+  transition:height 1s;
+  -webkit-transition:height 1s;
+  max-width: 288px;
 }
 
 .note-body {
   outline: 0;
-  font-size: 20px;
-  padding: 10px 16px, 16px;
+  font-size: 16px;
+  padding: 0px 10px;
+  text-align: left;
+  float: left;
+  background-color:rgba(0, 0, 0, 0);
+  color:black;
+  border: none; 
+  outline:none; 
+  height:30px;
+  transition:height 0.1s;
+  -webkit-transition:height 0.1s;
+  width: 270px;
+  resize: vertical;
+  overflow: overlay;
+}
+
+.note-body::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.note-body::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.note-body::-webkit-scrollbar {
+  width: 0px;
+  background-color: transparent;
 }
 
 .new-note-button {
   display: inline-block;
-  padding: 15px 25px;
-  font-size: 24px;
+  padding: 5px 15px;
+  font-size: 20px;
+  font-weight: bold;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
   outline: none;
-  color: #000000;
-  background-color: #f0c806;
+  background-color: #eb4034;
   border: none;
-  border-radius: 15px;
   box-shadow: 0 9px #999;
+  border-radius: 8px;
+  width: 288px;
+  margin: 10px 10px 15px;
+  transition: all 0.5s;
+  font-family: 'Arial black';
 }
 
-.new-note-button:hover {background-color: #e0bb06}
+.new-note-button:hover {background-color: #d6382d}
 
 .new-note-button:active {
-  background-color:  #e0bb06;
+  background-color:  #d6382d;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
 
+.dark {
+  background-color: #212121;
+  color: white;
+}
 
+.light {
+  background-color: white;
+  color: black;
+}
 
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
 
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 
+.round-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000066;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
 
+.round-slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color:white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .round-slider {
+  background-color: #2196F3;
+}
+
+input:focus + .round-slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .round-slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.round-slider {
+  border-radius: 34px;
+}
+
+.round-slider:before {
+  border-radius: 50%;
+}
+
+.sun-img {
+  color: yellow;
+  float: left;
+  padding: 7px 6px;
+}
+.moon-img {
+  color: white;
+  float: right;
+  padding: 7px 6px;
+}
+
+.scrollable {
+  height: 80vh;
+  overflow-y: overlay;
+}
+
+.accountLayout {
+  display: flex;
+  justify-content: center;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cccccc;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a7a5a3;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #696767;
+  border-radius: 10px;
+}
+
+#centerMenu {
+  width: 145vh;
+}
+
+#leftMenu {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 10px;
+  width: 23vh;
+}
