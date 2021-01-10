@@ -3,6 +3,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Button } from 'react-bootstrap';
 import { AccountInfoDisplay, StickyNotesSection, ScheduleUI, StatsUI, AchievementsUI, OptionsUI, AboutUI } from "./Displays"
+import { LoadingScreen } from "./Components"
 import "./index.css";
 
 
@@ -49,8 +50,6 @@ export class LeftMenu extends Component {
                             </span>
                         </span>
                     </label> 
-                    
-                        
                 </div>
             </div>
         );
@@ -64,7 +63,8 @@ export class CenterMenu extends Component {
                 <CSSTransition classNames="fade" timeout={150}>
                     <Switch>
                         <Route exact path="/">
-                            <ScheduleUI schedule={this.props.schedule} update={this.props.updateSchedule}/>
+                            {/* <ScheduleUI schedule={this.props.schedule} update={this.props.updateSchedule}/> */}
+                            <LoadingScreen />
                         </Route>
                         <Route path="/stats">
                             <StatsUI />

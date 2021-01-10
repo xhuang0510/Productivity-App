@@ -2,7 +2,7 @@ import React, { Component } from 'react'; //import React Component
 import Clock from 'react-live-clock';
 import { Inject, ScheduleComponent, Day, Week, ViewsDirective, ViewDirective, DragAndDrop, ExcelExport, Resize } from "@syncfusion/ej2-react-schedule"
 import { Button } from 'react-bootstrap';
-import { StickyNoteList, NewNoteButton } from "./Components"
+import { StickyNoteList, NewNoteButton, LoadingScreen } from "./Components"
 import "./index.css";
 
 export class AccountInfoDisplay extends Component {
@@ -97,9 +97,6 @@ export class ScheduleUI extends Component {
     render() {
         return (
             <div className="scheduleSection">
-                <div className="loading">
-                    <i className="fa fa-spinner fa-spin" aria-hidden="true"></i>
-                </div>
                 <ScheduleComponent cssClass='excel-export' width="100%" height="100vh" ref={t => this.scheduleObj = t} id='schedule'
                                     actionBegin={this.onActionBegin.bind(this)} eventSettings={{ dataSource: this.props.schedule }}>
                     <ViewsDirective>

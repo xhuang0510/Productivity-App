@@ -9,13 +9,6 @@ export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      /*
-        {
-          startTime: something,
-          endTime: something,
-
-        }
-      */
       scheduleObjects: [
         {
           Id: 1,
@@ -40,13 +33,6 @@ export class App extends Component {
           EndTime: new Date(2021, 0, 8, 14, 30)
         }
       ],
-      /* 
-        // sticky note JSON
-        {
-          title: "",
-          body: ""
-        }
-      */
       stickyNoteObjects: [],
       pinnedStickyNotes: [],
       stickyNotesList: [
@@ -117,7 +103,6 @@ export class App extends Component {
     this.setState({
       displayMode: mode
     });
-    console.log(this.state.displayMode);
   } 
 
   // Resets display state to default if window is resized
@@ -133,8 +118,14 @@ export class App extends Component {
   // Renders the application
   render() {
     console.log("Rendering App...");
+    let appDisplay;
+    if(this.state.displayMode === "light") {
+      appDisplay = "App light"
+    } else {
+      appDisplay = "App dark"
+    }
     return (
-      <div className="App" id="App">
+      <div className={appDisplay} id="App">
         <Router>
           <div id="leftMenu" className={this.state.displayMode}>
             <LeftMenu className="menu" toggle={this.toggleDisplayMode}></LeftMenu>

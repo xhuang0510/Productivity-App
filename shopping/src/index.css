@@ -14,10 +14,6 @@ code {
     monospace;
 }
 
-.thisSection {
-  color: pink;
-}
-
 #App {
   display: flex;
   align-items: top;
@@ -179,12 +175,12 @@ code {
 
 .dark {
   background-color: #212121;
-  color: white;
+  color: #fafafa;
 }
 
 .light {
-  background-color: white;
-  color: black;
+  background-color: #fafafa;
+  color:  #212121;
 }
 
 .toggle-switch {
@@ -288,6 +284,7 @@ input:checked + .round-slider:before {
 
 #centerMenu {
   width: 145vh;
+  height: 100vh;
 }
 
 #leftMenu {
@@ -296,4 +293,23 @@ input:checked + .round-slider:before {
   flex-direction: column;
   padding: 10px;
   width: 23vh;
+  height: 100vh;
+  border-right-style: solid;
+  border-bottom-right-radius: 5%;
+  border-top-right-radius: 5%;
+}
+
+#rightMenu {
+  border-left-style: solid;
+  border-bottom-left-radius: 5%;
+  border-top-left-radius: 5%;
+  height: 100vh;
+}
+
+.loading {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
