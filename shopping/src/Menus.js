@@ -101,8 +101,9 @@ export class RightMenu extends Component {
                     <StickyNotesSection 
                         updateSticky={this.props.updateSticky} 
                         stickyNotes={this.props.stickyNotes} 
-                        pinnedStickyNotes={this.props.pinnedStickyNotes}
-                        updatePinnedStickies={this.props.updatePinnedStickies}>    
+                        // pinnedStickyNotes={this.props.pinnedStickyNotes}
+                        // updatePinnedStickies={this.props.updatePinnedStickies}
+                        >    
                     </StickyNotesSection>
                 </div>
             </div>
