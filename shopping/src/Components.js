@@ -33,13 +33,22 @@ export class StickyNote extends Component {
     }
 
     pin = () => {
-        if (this.isPinned) {
-            this.isPinned = false
+        let element = document.querySelector('.note-pin');
+        let pinned = this.state.isPinned;
+        if (pinned) {
+            pinned = false;
+            element.classList.remove('pinned');
         } else {
-            this.isPinned = true
+            pinned = true;
+            element.classList.add('pinned');
         }
-        this.props.pin(this.props.keyNum, this.isPinned)
+        this.setState({
+            isPinned: pinned
+        })
+        this.render();
+        this.props.pin(this.props.keyNum, this.state.isPinned)
     }
+
 
     render() {
         return (
@@ -71,9 +80,7 @@ export class StickyNoteList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            inputTitle: this.props.title,
-            inputBody: this.props.body,
-            isPinned: false
+            stickyNotesArr: this.props.stickyNotes
         }
     }
 

@@ -87,6 +87,7 @@ export class App extends Component {
     })
   }
 
+
   // updatePinnedStickies = (pinnedStickyArray) => {
   //   this.setState({
   //     pinnedStickyNotes: pinnedStickyArray
