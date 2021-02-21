@@ -34,7 +34,7 @@ export class App extends Component {
         }
       ],
       stickyNoteObjects: [],
-      pinnedStickyNotes: [],
+      // pinnedStickyNotes: [],
       stickyNotesList: [
         {
           title: "Note 1",
@@ -87,11 +87,12 @@ export class App extends Component {
     })
   }
 
-  updatePinnedStickies = (pinnedStickyArray) => {
-    this.setState({
-      pinnedStickyNotes: pinnedStickyArray
-    })
-  }
+
+  // updatePinnedStickies = (pinnedStickyArray) => {
+  //   this.setState({
+  //     pinnedStickyNotes: pinnedStickyArray
+  //   })
+  // }
 
   toggleDisplayMode = () => {
     let mode = ""
@@ -138,8 +139,9 @@ export class App extends Component {
               className="menu" 
               updateSticky={this.updateStickies} 
               stickyNotes={this.state.stickyNotesList} 
-              pinnedStickyNotes={this.state.pinnedStickyNotes}
-              updatePinnedStickies={this.updatePinnedStickies}>
+              // pinnedStickyNotes={this.state.pinnedStickyNotes}
+              // updatePinnedStickies={this.updatePinnedStickies}
+              >
             </RightMenu>
           </div>
         </Router>

@@ -45,8 +45,9 @@ export class StickyNotesSection extends Component {
                 <StickyNoteList 
                     updateSticky={this.props.updateSticky} 
                     stickyNotes={this.props.stickyNotes} 
-                    pinnedStickyNotes={this.props.pinnedStickyNotes}
-                    updatePinnedStickies={this.props.updatePinnedStickies}>
+                    // pinnedStickyNotes={this.props.pinnedStickyNotes}
+                    // updatePinnedStickies={this.props.updatePinnedStickies}
+                    >
                 </StickyNoteList>
                 <NewNoteButton updateSticky={this.props.updateSticky} stickyNotes={this.props.stickyNotes}></NewNoteButton>
             </div>
