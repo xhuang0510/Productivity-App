@@ -9,18 +9,18 @@ export class StickyNote extends Component {
             inputTitle: this.props.title,
             inputBody: this.props.body,
             isPinned: false
-        }
+        };
     }
 
     remove = () => {
-        this.props.remove(this.props.keyNum, this.state.isPinned);
+        this.props.remove(this.props.keyNum);
     }
 
     editTitle = (textbox) => {
         this.setState({
             inputTitle: textbox.target.value
         }, () => {
-            this.props.updateTitle(this.props.keyNum, this.state.inputTitle, this.state.isPinned);
+            this.props.updateTitle(this.props.keyNum, this.state.inputTitle);
         });
     }
 
@@ -28,7 +28,7 @@ export class StickyNote extends Component {
         this.setState({
             inputBody: textbox.target.value
         }, () => {
-            this.props.updateBody(this.props.keyNum, this.state.inputBody, this.state.isPinned);
+            this.props.updateBody(this.props.keyNum, this.state.inputBody);
         });
     }
 
@@ -49,7 +49,6 @@ export class StickyNote extends Component {
         this.props.pin(this.props.keyNum, this.state.isPinned)
     }
 
-
     render() {
         return (
             <div id ='notesWrapper'>
@@ -58,16 +57,14 @@ export class StickyNote extends Component {
                     <div className = 'note'>
                         <div className ='note-header'>
                             <button className = 'note-close' onClick={this.remove}>
-                                {/* x button  */}
                                 <i className="fas fa-times"></i>
                             </button>
                             <button className = 'note-pin' onClick={this.pin}>
-                                {/* pin button */}
                                 <i className="fas fa-thumbtack"></i>
                             </button>
                         </div>
-                        <input ref={this.titleBar} value={this.state.inputTitle} className='note-title' contentEditable suppressContentEditableWarning={true} onInput={this.editTitle} size={50}/>
-                        <textarea ref={this.bodyBar} value={this.state.inputBody} className='note-body' contentEditable suppressContentEditableWarning={true} onInput={this.editBody}/>
+                        <input value={this.props.title} className='note-title' contentEditable suppressContentEditableWarning={true} onInput={this.editTitle} size={50}/>
+                        <textarea value={this.props.body} className='note-body' contentEditable suppressContentEditableWarning={true} onInput={this.editBody}/>
                     </div>
                 </div>
             </div>
@@ -77,21 +74,13 @@ export class StickyNote extends Component {
 
 // You can do an array of elements to render them all at once
 export class StickyNoteList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            stickyNotesArr: this.props.stickyNotes
-        }
-    }
-
-    updateStickyList = (index, isPinned) => {
+    updateStickyList = (index) => {
         let newArray = this.props.stickyNotes;
-        console.log(newArray);
         newArray.splice(index, 1);
         this.props.updateSticky(newArray);  
     }
 
-    updateStickyTitle = (index, text, isPinned) => {
+    updateStickyTitle = (index, text) => {
         let newArray = this.props.stickyNotes;
         newArray[index] = {
             title: text,
@@ -101,7 +90,7 @@ export class StickyNoteList extends Component {
         
     }
 
-    updateStickyBody = (index, text, isPinned) => {
+    updateStickyBody = (index, text) => {
         let newArray = this.props.stickyNotes;
         newArray[index] = {
             title: newArray[index].title,
@@ -114,7 +103,6 @@ export class StickyNoteList extends Component {
     pin = (index, isPinned) => {
         let newArray = this.props.stickyNotes;
         let currSticky = newArray[index];
-        console.log(currSticky)
         this.updateStickyList(index, isPinned);
         if (isPinned) {
             newArray.unshift(currSticky);
@@ -140,8 +128,14 @@ export class StickyNoteList extends Component {
                     pin={this.pin}>
                 </StickyNote>)
         }
+        let array = this.props.stickyNotes;
+        let array2 = [];
+        for(let i = 0; i < array.length; i++) {
+            array2.push(array[i].title);
+        }
         let renderDisplay = (
             <div className="scrollable">
+                {array2}
                 {stickyNoteDisplay}
             </div>
         )

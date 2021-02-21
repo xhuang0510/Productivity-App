@@ -33,7 +33,6 @@ export class App extends Component {
           EndTime: new Date(2021, 0, 8, 14, 30)
         }
       ],
-      stickyNoteObjects: [],
       // pinnedStickyNotes: [],
       stickyNotesList: [
         {
@@ -73,6 +72,7 @@ export class App extends Component {
   // test
   logState = () => {
     console.log(this.state);
+    this.render();
   }
 
   updateSchedule = (scheduleArray) => {
@@ -83,7 +83,7 @@ export class App extends Component {
 
   updateStickies = (stickyArray) => {
     this.setState({
-      stickyNoteObjects: stickyArray
+      stickyNoteList: stickyArray
     })
   }
 
@@ -139,10 +139,7 @@ export class App extends Component {
             <RightMenu 
               className="menu" 
               updateSticky={this.updateStickies} 
-              stickyNotes={this.state.stickyNotesList} 
-              // pinnedStickyNotes={this.state.pinnedStickyNotes}
-              // updatePinnedStickies={this.updatePinnedStickies}
-              >
+              stickyNotes={this.state.stickyNotesList} >
             </RightMenu>
           </div>
         </Router>

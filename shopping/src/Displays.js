@@ -35,19 +35,22 @@ export class StickyNotesSection extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            
+            i: 0
         }
     }
+
+    // test = () => {
+    //     this.setState({
+    //         i: this.state.i + 1
+    //     })
+    // }
 
     render() {
         return (
             <div>
                 <StickyNoteList 
                     updateSticky={this.props.updateSticky} 
-                    stickyNotes={this.props.stickyNotes} 
-                    // pinnedStickyNotes={this.props.pinnedStickyNotes}
-                    // updatePinnedStickies={this.props.updatePinnedStickies}
-                    >
+                    stickyNotes={this.props.stickyNotes} >
                 </StickyNoteList>
                 <NewNoteButton updateSticky={this.props.updateSticky} stickyNotes={this.props.stickyNotes}></NewNoteButton>
             </div>
