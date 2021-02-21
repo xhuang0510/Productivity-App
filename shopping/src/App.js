@@ -71,8 +71,8 @@ export class App extends Component {
   }
 
   // test
-  sayhello = () => {
-    console.log("Hello World!");
+  logState = () => {
+    console.log(this.state);
   }
 
   updateSchedule = (scheduleArray) => {
@@ -135,6 +135,7 @@ export class App extends Component {
             <CenterMenu className="menu" updateSchedule={this.updateSchedule} schedule={this.state.scheduleObjects}></CenterMenu>
           </div>
           <div id="rightMenu" className={this.state.displayMode}>
+            <button onClick={this.logState}>Log the State</button>
             <RightMenu 
               className="menu" 
               updateSticky={this.updateStickies} 
