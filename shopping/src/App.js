@@ -33,23 +33,27 @@ export class App extends Component {
           EndTime: new Date(2021, 0, 8, 14, 30)
         }
       ],
-      // pinnedStickyNotes: [],
-      stickyNotesList: [
+      stickyNotes: [
         {
           title: "Note 1",
-          body: "This is Note 1!"
+          body: "This is Note 1!",
+          isPinned: false
         },
         {
           title: "Note 2",
-          body: "This is Note 2!"
+          body: "This is Note 2!",
+          isPinned: false
+          
         },
         {
           title: "Note 3",
-          body: "This is Note 3!"
+          body: "This is Note 3!",
+          isPinned: false
         },
         {
           title: "Note 4",
-          body: "This is Note 4!"
+          body: "This is Note 4!",
+          isPinned: false
         }
       ],
       /*
@@ -81,18 +85,11 @@ export class App extends Component {
     })
   }
 
-  updateStickies = (stickyArray) => {
+  updateStickyNotes = (StickyArray) => {
     this.setState({
-      stickyNoteList: stickyArray
+      stickyNotes: StickyArray
     })
   }
-
-
-  // updatePinnedStickies = (pinnedStickyArray) => {
-  //   this.setState({
-  //     pinnedStickyNotes: pinnedStickyArray
-  //   })
-  // }
 
   toggleDisplayMode = () => {
     let mode = ""
@@ -135,11 +132,10 @@ export class App extends Component {
             <CenterMenu className="menu" updateSchedule={this.updateSchedule} schedule={this.state.scheduleObjects}></CenterMenu>
           </div>
           <div id="rightMenu" className={this.state.displayMode}>
-            <button onClick={this.logState}>Log the State</button>
             <RightMenu 
               className="menu" 
-              updateSticky={this.updateStickies} 
-              stickyNotes={this.state.stickyNotesList} >
+              updateStickyNotes={this.updateStickyNotes} 
+              stickyNotes={this.state.stickyNotes} >
             </RightMenu>
           </div>
         </Router>

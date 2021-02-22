@@ -49,10 +49,14 @@ export class StickyNotesSection extends Component {
         return (
             <div>
                 <StickyNoteList 
-                    updateSticky={this.props.updateSticky} 
-                    stickyNotes={this.props.stickyNotes} >
+                     updateStickyNotes={this.props.updateStickyNotes} 
+                     stickyNotes={this.props.stickyNotes} >
                 </StickyNoteList>
-                <NewNoteButton updateSticky={this.props.updateSticky} stickyNotes={this.props.stickyNotes}></NewNoteButton>
+                <NewNoteButton 
+                     updateStickyNotes={this.props.updateStickyNotes} 
+                     stickyNotes={this.props.stickyNotes}>
+
+                </NewNoteButton>
             </div>
         );
     }

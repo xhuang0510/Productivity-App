@@ -8,7 +8,7 @@ export class StickyNote extends Component {
         this.state = {
             inputTitle: this.props.title,
             inputBody: this.props.body,
-            isPinned: false
+            black: true
         };
     }
 
@@ -33,23 +33,12 @@ export class StickyNote extends Component {
     }
 
     pin = () => {
-        let element = document.querySelector('.note-pin');
-        let pinned = this.state.isPinned;
-        if (pinned) {
-            pinned = false;
-            element.classList.remove('pinned');
-        } else {
-            pinned = true;
-            element.classList.add('pinned');
-        }
-        this.setState({
-            isPinned: pinned
-        })
-        this.render();
-        this.props.pin(this.props.keyNum, this.state.isPinned)
+        this.setState({black: !this.state.black});
+        this.props.pin(this.props.keyNum);
     }
 
     render() {
+        let pinClass = this.state.black ? 'note-pin black' : 'note-pin white'
         return (
             <div id ='notesWrapper'>
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossOrigin="anonymous" />
@@ -59,7 +48,7 @@ export class StickyNote extends Component {
                             <button className = 'note-close' onClick={this.remove}>
                                 <i className="fas fa-times"></i>
                             </button>
-                            <button className = 'note-pin' onClick={this.pin}>
+                            <button className = {pinClass} onClick={this.pin}>
                                 <i className="fas fa-thumbtack"></i>
                             </button>
                         </div>
@@ -77,7 +66,7 @@ export class StickyNoteList extends Component {
     updateStickyList = (index) => {
         let newArray = this.props.stickyNotes;
         newArray.splice(index, 1);
-        this.props.updateSticky(newArray);  
+        this.props.updateStickyNotes(newArray);  
     }
 
     updateStickyTitle = (index, text) => {
@@ -86,7 +75,7 @@ export class StickyNoteList extends Component {
             title: text,
             body: newArray[index].body
         };
-        this.props.updateSticky(newArray);
+        this.props.updateStickyNotes(newArray);
         
     }
 
@@ -96,20 +85,30 @@ export class StickyNoteList extends Component {
             title: newArray[index].title,
             body: text
         };
-        this.props.updateSticky(newArray);
+        this.props.updateStickyNotes(newArray);
        
     }
 
-    pin = (index, isPinned) => {
+    pin = (index) => {
         let newArray = this.props.stickyNotes;
         let currSticky = newArray[index];
-        this.updateStickyList(index, isPinned);
-        if (isPinned) {
-            newArray.unshift(currSticky);
-        } else {
-            newArray.push(currSticky)
+        let pinned = currSticky.isPinned;
+        
+
+        currSticky = {
+            title: currSticky.title,
+            body: currSticky.body,
+            isPinned: !pinned
         }
-        this.props.updateSticky(newArray);
+
+        newArray.splice(index, 1);
+        if (pinned) {
+            newArray.push(currSticky);
+        } else {
+            newArray.unshift(currSticky);
+        }
+
+        this.props.updateStickyNotes(newArray);
     }
 
     render() {
@@ -128,14 +127,8 @@ export class StickyNoteList extends Component {
                     pin={this.pin}>
                 </StickyNote>)
         }
-        let array = this.props.stickyNotes;
-        let array2 = [];
-        for(let i = 0; i < array.length; i++) {
-            array2.push(array[i].title);
-        }
         let renderDisplay = (
             <div className="scrollable">
-                {array2}
                 {stickyNoteDisplay}
             </div>
         )
@@ -148,9 +141,10 @@ export class NewNoteButton extends Component {
         let array = this.props.stickyNotes;
         array.push({
             title: "Title",
-            body: "Text goes here"
+            body: "Text goes here",
+            isPinned: false
         });
-        this.props.updateSticky(array);
+        this.props.updateStickyNotes(array);
     }
 
     render(){

@@ -99,7 +99,7 @@ export class RightMenu extends Component {
                 <AccountInfoDisplay></AccountInfoDisplay>
                 <div className="stickyNotesSection">
                     <StickyNotesSection 
-                        updateSticky={this.props.updateSticky} 
+                        updateStickyNotes={this.props.updateStickyNotes} 
                         stickyNotes={this.props.stickyNotes} >    
                     </StickyNotesSection>
                 </div>
