@@ -75,10 +75,6 @@ code {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.note-pin.pinned {
-  color: white;
-}
-
 .note-close {
   display: inline-block;
   width: 24px;
@@ -176,6 +172,14 @@ code {
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+
+/* .light { 
+  @import 'ej2/material.scss'; 
+} 
+
+.dark { 
+  @import '/material-dark.css'; 
+}  */
 
 .dark {
   background-color: #212121;

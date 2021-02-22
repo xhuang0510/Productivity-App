@@ -97,8 +97,10 @@ export class App extends Component {
   toggleDisplayMode = () => {
     let mode = ""
     if(this.state.displayMode === "light") {
+      document.getElementById('scheduleLight').disabled = true;
       mode = "dark";
     } else {
+      document.getElementById('scheduleLight').disabled = false;
       mode = "light"
     }
     this.setState({
@@ -130,12 +132,12 @@ export class App extends Component {
         <Router>
           <div id="leftMenu" className={this.state.displayMode}>
             <LeftMenu className="menu" toggle={this.toggleDisplayMode}></LeftMenu>
+            <button onClick={this.logState}>Log the State</button>
           </div>
           <div id="centerMenu" className={this.state.displayMode}>
             <CenterMenu className="menu" updateSchedule={this.updateSchedule} schedule={this.state.scheduleObjects}></CenterMenu>
           </div>
           <div id="rightMenu" className={this.state.displayMode}>
-            <button onClick={this.logState}>Log the State</button>
             <RightMenu 
               className="menu" 
               updateSticky={this.updateStickies} 

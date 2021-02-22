@@ -128,14 +128,8 @@ export class StickyNoteList extends Component {
                     pin={this.pin}>
                 </StickyNote>)
         }
-        let array = this.props.stickyNotes;
-        let array2 = [];
-        for(let i = 0; i < array.length; i++) {
-            array2.push(array[i].title);
-        }
         let renderDisplay = (
             <div className="scrollable">
-                {array2}
                 {stickyNoteDisplay}
             </div>
         )
