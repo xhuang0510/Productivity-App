@@ -1,4 +1,4 @@
-import React, { Component } from 'react'; //import React Component
+import React, { Component, Suspense } from 'react'; //import React Component
 import { Switch, Route, Link } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Button } from 'react-bootstrap';
@@ -63,8 +63,9 @@ export class CenterMenu extends Component {
                 <CSSTransition classNames="fade" timeout={150}>
                     <Switch>
                         <Route exact path="/">
-                            {/* <ScheduleUI schedule={this.props.schedule} update={this.props.updateSchedule}/> */}
-                            <LoadingScreen />
+                            <Suspense fallback={<LoadingScreen />}>
+                                <ScheduleUI schedule={this.props.schedule} update={this.props.updateSchedule}/>
+                            </Suspense>
                         </Route>
                         <Route path="/stats">
                             <StatsUI />

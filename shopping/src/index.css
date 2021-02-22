@@ -181,6 +181,14 @@ code {
   transform: translateY(4px);
 }
 
+/* .light { 
+  @import 'ej2/material.scss'; 
+} 
+
+.dark { 
+  @import '/material-dark.css'; 
+}  */
+
 .dark {
   background-color: #212121;
   color: #fafafa;

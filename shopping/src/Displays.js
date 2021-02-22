@@ -3,7 +3,9 @@ import Clock from 'react-live-clock';
 import { Inject, ScheduleComponent, Day, Week, ViewsDirective, ViewDirective, DragAndDrop, ExcelExport, Resize } from "@syncfusion/ej2-react-schedule"
 import { Button } from 'react-bootstrap';
 import { StickyNoteList, NewNoteButton, LoadingScreen } from "./Components"
+import { Transition } from 'react-spring/renderprops'
 import "./index.css";
+// import styles from "./material-dark.css"
 
 export class AccountInfoDisplay extends Component {
     // Stores the state of this component and inherits properties from parent
@@ -39,12 +41,6 @@ export class StickyNotesSection extends Component {
         }
     }
 
-    // test = () => {
-    //     this.setState({
-    //         i: this.state.i + 1
-    //     })
-    // }
-
     render() {
         return (
             <div>
@@ -66,6 +62,7 @@ export class ScheduleUI extends Component {
     constructor(props) {
         super(props);
         this.mounted = false;
+        // Saves data automatically every 60 seconds while component is active
         this.interval = setInterval(() => {
             if(this.mounted) {
                 this.saveData();
@@ -105,6 +102,9 @@ export class ScheduleUI extends Component {
     render() {
         return (
             <div className="scheduleSection">
+                <Transition from={{ opacity: 1 }} leave={{ opacity: 0 }}>
+                    
+                </Transition>
                 <ScheduleComponent cssClass='excel-export' width="100%" height="100vh" ref={t => this.scheduleObj = t} id='schedule'
                                     actionBegin={this.onActionBegin.bind(this)} eventSettings={{ dataSource: this.props.schedule }}>
                     <ViewsDirective>
