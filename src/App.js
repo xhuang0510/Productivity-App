@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; //import React Component
 import { LeftMenu, RightMenu, CenterMenu } from "./Menus"
 import { BrowserRouter as Router } from "react-router-dom";
-import './App.css';
+import './css/App.css';
 
 
 export class App extends Component {

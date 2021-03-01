@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; //import React Component
-import "./index.css";
+import "./css/index.css";
 
 
 export class StickyNote extends Component {

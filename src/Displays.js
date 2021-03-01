@@ -4,8 +4,8 @@ import { Inject, ScheduleComponent, Day, Week, ViewsDirective, ViewDirective, Dr
 import { Button } from 'react-bootstrap';
 import { StickyNoteList, NewNoteButton, LoadingScreen } from "./Components"
 import { Transition } from 'react-spring/renderprops'
-import "./index.css";
-// import styles from "./material-dark.css"
+import "./css/index.css";
+// import styles from "./css/material-dark.css"
 
 export class AccountInfoDisplay extends Component {
     // Stores the state of this component and inherits properties from parent

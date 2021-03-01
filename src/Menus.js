@@ -4,7 +4,7 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Button } from 'react-bootstrap';
 import { AccountInfoDisplay, StickyNotesSection, ScheduleUI, StatsUI, AchievementsUI, OptionsUI, AboutUI } from "./Displays"
 import { LoadingScreen } from "./Components"
-import "./index.css";
+import "./css/index.css";
 
 
 export class LeftMenu extends Component {
