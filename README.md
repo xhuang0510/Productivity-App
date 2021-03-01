@@ -22,7 +22,7 @@ Functionality:
 
 How to Use (for Temporary Build):
 1. Download the full project to a folder. 
-2. Open the App.js file in the terminal
+2. Under your targeted destination path, navigate to the src folder in your terminal. 
 3. Run 'npm install' to install dependencies
 4. Run 'npm start' to start the application.
 5. Enjoy!
