@@ -267,11 +267,13 @@ input:checked + .round-slider:before {
   overflow-y: overlay;
 }
 
+/* Aligning the account layout section */
 .accountLayout {
   display: flex;
   justify-content: center;
 }
 
+/* Scroll bar styling */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -291,11 +293,13 @@ input:checked + .round-slider:before {
   border-radius: 10px;
 }
 
+/* Aligning the center menu */
 #centerMenu {
   width: 145vh;
   height: 100vh;
 }
 
+/* Aligning the left menu */
 #leftMenu {
   display: flex;
   justify-content: space-between;
@@ -308,6 +312,7 @@ input:checked + .round-slider:before {
   border-top-right-radius: 5%;
 }
 
+/* Aligning the right menu */
 #rightMenu {
   border-left-style: solid;
   border-bottom-left-radius: 5%;
@@ -315,14 +320,7 @@ input:checked + .round-slider:before {
   height: 100vh;
 }
 
-/* .loading {
-  flex-direction: column;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-} */
-
+/* Animated react routing */
 .switch-wrapper {
   position: relative;
 }
@@ -332,4 +330,61 @@ input:checked + .round-slider:before {
   left: 0;
   right: 0;
   margin: auto
+}
+
+/* Styling the pop-up smart scheduler */
+.pop {
+  font-size: 12px;
+}
+
+.pop > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px;
+}
+
+.pop > .content {
+  width: 100%;
+  padding: 10px 5px;
+}
+
+.pop > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+
+.pop > .close {
+  cursor: pointer;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  font-size: 24px;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}
+
+/* Animating the smart scheduler-pop-up menu */
+@keyframes anvil {
+  0% {
+    transform: scale(1) translateY(0px);
+    opacity: 0;
+    box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+  }
+  1% {
+    transform: scale(0.96) translateY(10px);
+    opacity: 0;
+    box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+  }
+  100% {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+    box-shadow: 0 0 500px rgba(241, 241, 241, 0);
+  }
+}
+.popup-content {
+  -webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
 }

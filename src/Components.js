@@ -1,5 +1,7 @@
 import React, { Component } from 'react'; //import React Component
 import { Button } from 'react-bootstrap';
+import { Popup } from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 import "./css/index.css";
 
 
@@ -163,22 +165,54 @@ export class NewNoteButton extends Component {
 }
 
 export class SmartScheduler extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            
+        };
+    }
+
+    smartAdd = () => {
+        alert("CLICK");
+    }
+
     render() {
         return (
             <div>
-                <Button>Smart Scheduler</Button>
-            </div>
+                <Popup
+                    trigger={<Button className="button"> Smart Scheduler </Button>}
+                    modal
+                    nested
+                >
+                    {close => (
+                    <div className="pop">
+                        <button className="close" onClick={close}>
+                        &times;
+                        </button>
+                        <div className="header"> Insert your to-do list </div>
+                        <div className="content">
+                        {' '}
+                        You clicked on the smart scheduler
+                        </div>
+                        <div className="options">
+                            Options
+                        </div>
+                        <div className="actions">
+                        <Button className="button" onClick={this.smartAdd}> Next </Button>
+                        <Button
+                            className="button"
+                            onClick={() => {
+                            console.log('modal closed ');
+                            close();
+                            }}
+                        >
+                            Close
+                        </Button>
+                        </div>
+                    </div>
+                    )}
+                </Popup>
+            </div>   
         );
     }
 }
-
-// export class LoadingScreen extends Component {
-//     render() {
-//         return(
-//             <div className="loading">
-//                 <i className="fa fa-spinner fa-spin fa-5x" aria-hidden="true"></i>
-//                 <p>Loading...</p>
-//             </div>
-//         )
-//     }
-// }
