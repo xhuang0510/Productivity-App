@@ -25,8 +25,8 @@ export class AccountInfoDisplay extends Component {
                         <Clock format={'LT'} ticking={true} />
                     </div>
 
-                    <button className="right-menu-buttons" id="login">Login</button>   
-                    <button className="right-menu-buttons">Logout</button>
+                    <button className="menu-buttons" id="login-button">Login</button>   
+                    <button className="menu-buttons" id="logout-button">Logout</button>
                 </div>
             </div>
         )

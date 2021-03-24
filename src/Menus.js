@@ -14,27 +14,27 @@ export class LeftMenu extends Component {
                 <h1>LOGO HERE</h1>
                 <div>
                     <Link to="/">
-                        <button className="left-menu-buttons">Schedule</button>
+                        <button className="menu-buttons">Schedule</button>
                     </Link>
                 </div>
                 <div>
                     <Link to="/stats">
-                        <button className="left-menu-buttons">Stats</button>
+                        <button className="menu-buttons">Stats</button>
                     </Link>
                 </div>
                 <div>
                     <Link to="/achievements">
-                        <button className="left-menu-buttons">Achievements</button>
+                        <button className="menu-buttons">Achievements</button>
                     </Link>
                 </div>
                 <div>
                     <Link to="/options">
-                        <button className="left-menu-buttons">Options</button>
+                        <button className="menu-buttons">Options</button>
                     </Link>
                 </div>
                 <div>
                     <Link to="/about">
-                        <button className="left-menu-buttons">About</button>
+                        <button className="menu-buttons">About</button>
                     </Link>
                 </div>
                

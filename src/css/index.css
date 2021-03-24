@@ -396,7 +396,8 @@ input:checked + .round-slider:before {
 .popup-content {
   -webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
 }
-.left-menu-buttons {
+
+.menu-buttons {
   display: inline-block;
   width: 18vh;
   padding: 10px 5px;
@@ -414,7 +415,7 @@ input:checked + .round-slider:before {
   color: black;
 }
 
-.left-menu-buttons:hover, .right-menu-buttons:hover {
+.menu-buttons:hover {
   background-color: #42A5F5;
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
 }
@@ -425,25 +426,17 @@ input:checked + .round-slider:before {
   font-size: 16px;
 }
 
-.right-menu-buttons {
-  display: inline-block;
+#login-button {
+  grid-column: 3/4;
   width: 8vh;
   padding: 10px 2px;
   font-size: 12px;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  background-color: #64B5F6;
-  border: none;
-  border-radius: 8px;
-  margin: 10px 10px 15px;
-  /* transition: all 0.5s; */
-  font-family: 'Arial black';
-  color: black;
+} 
+
+#logout-button {
+  width: 8vh;
+  padding: 10px 2px;
+  font-size: 12px;
 }
 
-#login {
-  grid-column: 3/4;
-}
 
