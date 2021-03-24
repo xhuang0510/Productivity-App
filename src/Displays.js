@@ -21,15 +21,13 @@ export class AccountInfoDisplay extends Component {
         return (
             <div>
                 <div className="accountLayout">
-                    <Clock format={'LT'} ticking={true} />
-                    <Button>
-                        Login
-                    </Button>
-                    <Button>
-                        Logout
-                    </Button>
+                    <div className="clock">
+                        <Clock format={'LT'} ticking={true} />
+                    </div>
+
+                    <button className="right-menu-buttons" id="login">Login</button>   
+                    <button className="right-menu-buttons">Logout</button>
                 </div>
-                <SmartScheduler></SmartScheduler>
             </div>
         )
     }
