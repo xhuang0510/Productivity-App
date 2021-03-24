@@ -181,14 +181,6 @@ code {
   transform: translateY(4px);
 }
 
-/* .light { 
-  @import 'ej2/material.scss'; 
-} 
-
-.dark { 
-  @import '/material-dark.css'; 
-}  */
-
 .dark {
   background-color: #212121;
   color: #fafafa;
@@ -269,8 +261,9 @@ input:checked + .round-slider:before {
   padding: 7px 6px;
 }
 
+/* Scrolling section of stickynotes */
 .scrollable {
-  height: 80vh;
+  height: 78vh;
   overflow-y: overlay;
 }
 
@@ -322,12 +315,23 @@ input:checked + .round-slider:before {
   height: 100vh;
 }
 
-.loading {
+/* .loading {
   flex-direction: column;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
+} */
+
+.switch-wrapper {
+  position: relative;
+}
+
+.switch-wrapper > div {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto
 }
 
 .left-menu-buttons {
@@ -352,5 +356,4 @@ input:checked + .round-slider:before {
   background-color: #42A5F5;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
 }
-
 

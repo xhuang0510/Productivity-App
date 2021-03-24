@@ -1,4 +1,5 @@
 import React, { Component } from 'react'; //import React Component
+import { Button } from 'react-bootstrap';
 import "./css/index.css";
 
 
@@ -161,13 +162,23 @@ export class NewNoteButton extends Component {
     }
 }
 
-export class LoadingScreen extends Component {
+export class SmartScheduler extends Component {
     render() {
-        return(
-            <div className="loading">
-                <i className="fa fa-spinner fa-spin fa-5x" aria-hidden="true"></i>
-                <p>Loading...</p>
+        return (
+            <div>
+                <Button>Smart Scheduler</Button>
             </div>
-        )
+        );
     }
 }
+
+// export class LoadingScreen extends Component {
+//     render() {
+//         return(
+//             <div className="loading">
+//                 <i className="fa fa-spinner fa-spin fa-5x" aria-hidden="true"></i>
+//                 <p>Loading...</p>
+//             </div>
+//         )
+//     }
+// }
