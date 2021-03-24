@@ -1,4 +1,5 @@
 import React, { Component } from 'react'; //import React Component
+import { Button } from 'react-bootstrap';
 import "./css/index.css";
 
 
@@ -158,6 +159,16 @@ export class NewNoteButton extends Component {
                 </button>
             </div>
         )
+    }
+}
+
+export class SmartScheduler extends Component {
+    render() {
+        return (
+            <div>
+                <Button>Smart Scheduler</Button>
+            </div>
+        );
     }
 }
 
