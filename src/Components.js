@@ -161,13 +161,13 @@ export class NewNoteButton extends Component {
     }
 }
 
-export class LoadingScreen extends Component {
-    render() {
-        return(
-            <div className="loading">
-                <i className="fa fa-spinner fa-spin fa-5x" aria-hidden="true"></i>
-                <p>Loading...</p>
-            </div>
-        )
-    }
-}
+// export class LoadingScreen extends Component {
+//     render() {
+//         return(
+//             <div className="loading">
+//                 <i className="fa fa-spinner fa-spin fa-5x" aria-hidden="true"></i>
+//                 <p>Loading...</p>
+//             </div>
+//         )
+//     }
+// }

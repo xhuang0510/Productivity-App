@@ -1,9 +1,8 @@
 import React, { Component, Suspense } from 'react'; //import React Component
-import { Switch, Route, Link } from "react-router-dom";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { Route, Link } from "react-router-dom";
 import { Button } from 'react-bootstrap';
 import { AccountInfoDisplay, StickyNotesSection, ScheduleUI, StatsUI, AchievementsUI, OptionsUI, AboutUI } from "./Displays"
-import { LoadingScreen } from "./Components"
+import { AnimatedSwitch } from 'react-router-transition';
 import "./css/index.css";
 
 
@@ -59,29 +58,28 @@ export class LeftMenu extends Component {
 export class CenterMenu extends Component {
     render() {
         return (
-            <TransitionGroup>
-                <CSSTransition classNames="fade" timeout={150}>
-                    <Switch>
-                        <Route exact path="/">
-                            <Suspense fallback={<LoadingScreen />}>
-                                <ScheduleUI schedule={this.props.schedule} update={this.props.updateSchedule}/>
-                            </Suspense>
-                        </Route>
-                        <Route path="/stats">
-                            <StatsUI />
-                        </Route>
-                        <Route path="/achievements">
-                            <AchievementsUI />
-                        </Route>
-                        <Route path="/options">
-                            <OptionsUI />
-                        </Route>
-                        <Route path="/about">
-                            <AboutUI />
-                        </Route>
-                    </Switch>
-                </CSSTransition>
-            </TransitionGroup>
+            <AnimatedSwitch
+                atEnter={{ opacity: 0 }}
+                atLeave={{ opacity: 0 }}
+                atActive={{ opacity: 1 }}
+                className="switch-wrapper"
+                >
+                <Route exact path="/">
+                    <ScheduleUI schedule={this.props.schedule} update={this.props.updateSchedule}/>
+                </Route>
+                <Route path="/stats">
+                    <StatsUI />
+                </Route>
+                <Route path="/achievements">
+                    <AchievementsUI />
+                </Route>
+                <Route path="/options">
+                    <OptionsUI />
+                </Route>
+                <Route path="/about">
+                    <AboutUI />
+                </Route>
+            </AnimatedSwitch>
         );
     }
 }

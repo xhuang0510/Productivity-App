@@ -2,8 +2,7 @@ import React, { Component } from 'react'; //import React Component
 import Clock from 'react-live-clock';
 import { Inject, ScheduleComponent, Day, Week, ViewsDirective, ViewDirective, DragAndDrop, ExcelExport, Resize } from "@syncfusion/ej2-react-schedule"
 import { Button } from 'react-bootstrap';
-import { StickyNoteList, NewNoteButton, LoadingScreen } from "./Components"
-import { Transition } from 'react-spring/renderprops'
+import { StickyNoteList, NewNoteButton } from "./Components"
 import "./css/index.css";
 // import styles from "./css/material-dark.css"
 
@@ -20,14 +19,17 @@ export class AccountInfoDisplay extends Component {
     // Whenever you change state, the component re-renders
     render() {
         return (
-            <div className="accountLayout">
-                <Clock format={'LT'} ticking={true} />
-                <Button>
-                    Login
-                </Button>
-                <Button>
-                    Logout
-                </Button>
+            <div>
+                <div className="accountLayout">
+                    <Clock format={'LT'} ticking={true} />
+                    <Button>
+                        Login
+                    </Button>
+                    <Button>
+                        Logout
+                    </Button>
+                </div>
+                <Button>Smart Scheduler</Button>
             </div>
         )
     }
@@ -51,7 +53,6 @@ export class StickyNotesSection extends Component {
                 <NewNoteButton 
                      updateStickyNotes={this.props.updateStickyNotes} 
                      stickyNotes={this.props.stickyNotes}>
-
                 </NewNoteButton>
             </div>
         );
@@ -102,9 +103,6 @@ export class ScheduleUI extends Component {
     render() {
         return (
             <div className="scheduleSection">
-                <Transition from={{ opacity: 1 }} leave={{ opacity: 0 }}>
-                    
-                </Transition>
                 <ScheduleComponent cssClass='excel-export' width="100%" height="100vh" ref={t => this.scheduleObj = t} id='schedule'
                                     actionBegin={this.onActionBegin.bind(this)} eventSettings={{ dataSource: this.props.schedule }}>
                     <ViewsDirective>
@@ -129,7 +127,7 @@ export class StatsUI extends Component {
     render() {
         return (
             <div>
-                These are stats 
+                <h1>These are stats</h1>
             </div>
         );
     }
@@ -146,7 +144,7 @@ export class AchievementsUI extends Component {
     render() {
         return (
             <div>
-                Achievements 
+                <h1>Achievements</h1> 
             </div>
         );
     }
@@ -163,7 +161,7 @@ export class OptionsUI extends Component {
     render() {
         return (
             <div>
-                Options 
+                <h1>Options</h1> 
             </div>
         );
     }
@@ -180,7 +178,7 @@ export class AboutUI extends Component {
     render() {
         return (
             <div>
-                About
+                <h1>About</h1>
             </div>
         );
     }
