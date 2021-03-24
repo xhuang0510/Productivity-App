@@ -41,7 +41,7 @@ code {
   padding-bottom: 25px;
   margin: 0 10px 5px;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
-  transition: all 0.5s;
+  /* transition: all 0.5s; */
   cursor: pointer;
   font-family: 'Arial Nova';
 }
@@ -61,7 +61,7 @@ code {
   border-radius: 50%;
   line-height: 24px;
   text-align: center;
-  transition: all 0.1s;
+  /* transition: all 0.1s; */
   background-color:#64B5F6;
   border: none;
   outline: 0;
@@ -90,10 +90,11 @@ code {
   border-radius: 50%;
   line-height: 24px;
   text-align: center;
-  transition: all 0.1s;
+  /* transition: all 0.1s; */
   background-color:#64B5F6;
   border: none;
   outline: 0;
+  color: black;
 } 
 
 .note-close{
@@ -112,7 +113,7 @@ code {
   float: left;
   font-family: 'Arial black';
   background-color:rgba(0, 0, 0, 0);
-  color:black;
+  color: black;
   border: none; 
   outline:none;
   height:30px;
@@ -128,7 +129,7 @@ code {
   text-align: left;
   float: left;
   background-color:rgba(0, 0, 0, 0);
-  color:black;
+  color: black;
   border: none; 
   outline:none; 
   height:30px;
@@ -169,8 +170,9 @@ code {
   border-radius: 8px;
   width: 288px;
   margin: 10px 10px 15px;
-  transition: all 0.5s;
+  /* transition: all 0.5s; */
   font-family: 'Arial black';
+  color: black;
 }
 
 .new-note-button:hover {background-color: #42A5F5}
@@ -360,7 +362,7 @@ input:checked + .round-slider:before {
 
 .left-menu-buttons:hover, .right-menu-buttons:hover {
   background-color: #42A5F5;
-  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .clock {
@@ -382,7 +384,7 @@ input:checked + .round-slider:before {
   border: none;
   border-radius: 8px;
   margin: 10px 10px 15px;
-  transition: all 0.5s;
+  /* transition: all 0.5s; */
   font-family: 'Arial black';
   color: black;
 }

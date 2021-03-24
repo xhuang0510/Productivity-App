@@ -2,7 +2,7 @@ import React, { Component } from 'react'; //import React Component
 import Clock from 'react-live-clock';
 import { Inject, ScheduleComponent, Day, Week, ViewsDirective, ViewDirective, DragAndDrop, ExcelExport, Resize } from "@syncfusion/ej2-react-schedule"
 import { Button } from 'react-bootstrap';
-import { StickyNoteList, NewNoteButton, SmartScheduler } from "./Components"
+import { StickyNoteList, NewNoteButton } from "./Components"
 import "./css/index.css";
 // import styles from "./css/material-dark.css"
 

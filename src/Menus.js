@@ -37,10 +37,7 @@ export class LeftMenu extends Component {
                         <button className="left-menu-buttons">About</button>
                     </Link>
                 </div>
-                <div>
-                    <SmartScheduler></SmartScheduler>
-                </div>
-
+               
                 <div className="toggle-switch-wrapper">
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossOrigin="anonymous" />
                     <label className="toggle-switch">
@@ -54,6 +51,10 @@ export class LeftMenu extends Component {
                             </span>
                         </span>
                     </label>
+                </div>
+
+                <div>
+                    <SmartScheduler></SmartScheduler>
                 </div>
                 
             </div>
