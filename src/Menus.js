@@ -14,29 +14,30 @@ export class LeftMenu extends Component {
                 <h1>LOGO HERE</h1>
                 <div>
                     <Link to="/">
-                        <Button>Schedule</Button>
+                        <button className="left-menu-buttons">Schedule</button>
                     </Link>
                 </div>
                 <div>
                     <Link to="/stats">
-                        <Button>Stats</Button>
-                    </Link>  
+                        <button className="left-menu-buttons">Stats</button>
+                    </Link>
                 </div>
                 <div>
                     <Link to="/achievements">
-                        <Button>Achievements</Button>
+                        <button className="left-menu-buttons">Achievements</button>
                     </Link>
                 </div>
                 <div>
                     <Link to="/options">
-                        <Button>Options</Button>
+                        <button className="left-menu-buttons">Options</button>
                     </Link>
                 </div>
                 <div>
                     <Link to="/about">
-                        <Button>About</Button>
+                        <button className="left-menu-buttons">About</button>
                     </Link>
                 </div>
+
                 <div>
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossOrigin="anonymous" />
                     <label className="toggle-switch">
@@ -49,8 +50,9 @@ export class LeftMenu extends Component {
                                 <i className="fas fa-moon"></i>
                             </span>
                         </span>
-                    </label> 
+                    </label>
                 </div>
+                
             </div>
         );
     }
@@ -64,7 +66,7 @@ export class CenterMenu extends Component {
                     <Switch>
                         <Route exact path="/">
                             <Suspense fallback={<LoadingScreen />}>
-                                <ScheduleUI schedule={this.props.schedule} update={this.props.updateSchedule}/>
+                                <ScheduleUI schedule={this.props.schedule} update={this.props.updateSchedule} />
                             </Suspense>
                         </Route>
                         <Route path="/stats">
@@ -90,7 +92,7 @@ export class RightMenu extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            
+
         }
     }
 
@@ -99,9 +101,9 @@ export class RightMenu extends Component {
             <div>
                 <AccountInfoDisplay></AccountInfoDisplay>
                 <div className="stickyNotesSection">
-                    <StickyNotesSection 
-                        updateStickyNotes={this.props.updateStickyNotes} 
-                        stickyNotes={this.props.stickyNotes} >    
+                    <StickyNotesSection
+                        updateStickyNotes={this.props.updateStickyNotes}
+                        stickyNotes={this.props.stickyNotes} >
                     </StickyNotesSection>
                 </div>
             </div>
