@@ -2,6 +2,7 @@ import React, { Component, Suspense } from 'react'; //import React Component
 import { Route, Link } from "react-router-dom";
 import { Button } from 'react-bootstrap';
 import { AccountInfoDisplay, StickyNotesSection, ScheduleUI, StatsUI, AchievementsUI, OptionsUI, AboutUI } from "./Displays"
+import { SmartScheduler } from "./Components"
 import { AnimatedSwitch } from 'react-router-transition';
 import "./css/index.css";
 
@@ -13,30 +14,34 @@ export class LeftMenu extends Component {
                 <h1>LOGO HERE</h1>
                 <div>
                     <Link to="/">
-                        <Button>Schedule</Button>
+                        <button className="left-menu-buttons">Schedule</button>
                     </Link>
                 </div>
                 <div>
                     <Link to="/stats">
-                        <Button>Stats</Button>
-                    </Link>  
+                        <button className="left-menu-buttons">Stats</button>
+                    </Link>
                 </div>
                 <div>
                     <Link to="/achievements">
-                        <Button>Achievements</Button>
+                        <button className="left-menu-buttons">Achievements</button>
                     </Link>
                 </div>
                 <div>
                     <Link to="/options">
-                        <Button>Options</Button>
+                        <button className="left-menu-buttons">Options</button>
                     </Link>
                 </div>
                 <div>
                     <Link to="/about">
-                        <Button>About</Button>
+                        <button className="left-menu-buttons">About</button>
                     </Link>
                 </div>
                 <div>
+                    <SmartScheduler></SmartScheduler>
+                </div>
+
+                <div className="toggle-switch-wrapper">
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossOrigin="anonymous" />
                     <label className="toggle-switch">
                         <input type="checkbox" onChange={this.props.toggle}></input>
@@ -48,8 +53,9 @@ export class LeftMenu extends Component {
                                 <i className="fas fa-moon"></i>
                             </span>
                         </span>
-                    </label> 
+                    </label>
                 </div>
+                
             </div>
         );
     }
@@ -88,7 +94,7 @@ export class RightMenu extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            
+
         }
     }
 
@@ -97,9 +103,9 @@ export class RightMenu extends Component {
             <div>
                 <AccountInfoDisplay></AccountInfoDisplay>
                 <div className="stickyNotesSection">
-                    <StickyNotesSection 
-                        updateStickyNotes={this.props.updateStickyNotes} 
-                        stickyNotes={this.props.stickyNotes} >    
+                    <StickyNotesSection
+                        updateStickyNotes={this.props.updateStickyNotes}
+                        stickyNotes={this.props.stickyNotes} >
                     </StickyNotesSection>
                 </div>
             </div>
