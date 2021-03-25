@@ -403,13 +403,13 @@ input:checked + .round-slider:before {
   text-align: center;
   text-decoration: none;
   outline: none;
+  color: black;
   background-color: #64B5F6;
   border: none;
   border-radius: 8px;
   margin: 10px 10px 15px;
   transition: all 0.5s;
   font-family: 'Arial black';
-  color: black;
 }
 
 .left-menu-buttons:hover, .right-menu-buttons:hover {
@@ -438,10 +438,23 @@ input:checked + .round-slider:before {
   margin: 10px 10px 15px;
   transition: all 0.5s;
   font-family: 'Arial black';
-  color: black;
+  /* color: black; */
 }
 
 #login {
   grid-column: 3/4;
 }
 
+.displayNone {
+  display: none;
+}
+
+.smartOptions {
+  width: 100%;
+  padding: 10px 5px;
+}
+
+.smartResults {
+  width: 100%;
+  padding: 10px 5px;
+}

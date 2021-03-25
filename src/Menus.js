@@ -1,6 +1,5 @@
-import React, { Component, Suspense } from 'react'; //import React Component
+import React, { Component } from 'react'; //import React Component
 import { Route, Link } from "react-router-dom";
-import { Button } from 'react-bootstrap';
 import { AccountInfoDisplay, StickyNotesSection, ScheduleUI, StatsUI, AchievementsUI, OptionsUI, AboutUI } from "./Displays"
 import { SmartScheduler } from "./Components"
 import { AnimatedSwitch } from 'react-router-transition';

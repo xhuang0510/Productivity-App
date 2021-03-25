@@ -151,7 +151,7 @@ export class NewNoteButton extends Component {
     }
 
     render(){
-        return(
+        return (
             <div>
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossOrigin="anonymous" />
                 <button className='new-note-button' onClick={this.add}>
@@ -168,41 +168,101 @@ export class SmartScheduler extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            
+            page: 1,
+            toDoObjects: []
         };
     }
 
-    smartAdd = () => {
-        alert("CLICK");
+    refresh = () => {
+        this.setState({
+            page: 1
+        })
+        console.log("refresh");
+    }
+
+    // Navigate to next section
+    nextPage = () => {
+        this.setState({
+            page: this.state.page + 1
+        })
+    }
+
+    // Navigate to previous section
+    prevPage = () => {
+        this.setState({
+            page: this.state.page - 1
+        })
+    }
+
+    // Smart algorithm to generate schedule
+    smartGenerate = () => {
+        this.nextPage();
+    }
+
+    // Update the state
+    updateState = () => {
+
     }
 
     render() {
+        // Default options
+        let defaultDisplay = "content";
+        let optionsDisplay = "smartOptions displayNone";
+        let resultsDisplay = "smartResults displayNone";
+        let prevDisplay = "displayNone"
+        let nextDisplay = "";
+        let generateDisplay = "displayNone";
+        let finishDisplay = "displayNone";
+        let closeDisplay = "";
+        // Page 2 options
+        if (this.state.page === 2) {
+            defaultDisplay = "content displayNone";
+            optionsDisplay = "smartOptions";
+            prevDisplay = "";
+            nextDisplay = "displayNone";
+            generateDisplay = "";
+            closeDisplay = "displayNone";
+        } else if (this.state.page === 3) { // Page 3 options
+            defaultDisplay = "content displayNone";
+            resultsDisplay = "smartResults";
+            prevDisplay = "";
+            nextDisplay = "displayNone";
+            finishDisplay = "";
+            closeDisplay = "displayNone";
+        }
         return (
             <div>
                 <Popup
-                    trigger={<Button className="button"> Smart Scheduler </Button>}
+                    trigger={<Button onClick={this.refresh}> Smart Scheduler </Button>}
                     modal
                     nested
                 >
                     {close => (
                     <div className="pop">
-                        <button className="close" onClick={close}>
+                        <button className="close" onClick={() => {close();}}>
                         &times;
                         </button>
                         <div className="header"> Insert your to-do list </div>
-                        <div className="content">
+                        <div className={defaultDisplay}>
                         {' '}
                         You clicked on the smart scheduler
                         </div>
-                        <div className="options">
+                        <div className={optionsDisplay}>
                             Options
                         </div>
+                        <div className={resultsDisplay}>
+                            Results
+                        </div>
                         <div className="actions">
-                        <Button className="button" onClick={this.smartAdd}> Next </Button>
+                        <Button className={prevDisplay} onClick={this.prevPage}> Prev </Button>
+                        <Button className={nextDisplay} onClick={this.nextPage}> Next </Button>
+                        <Button className={generateDisplay} onClick={this.smartGenerate}> Generate! </Button>
+                        <Button className={finishDisplay} onClick={() => {this.updateState(); 
+                                                                          close(); 
+                                                                          this.refresh()}}> Finish </Button>
                         <Button
-                            className="button"
+                            className={closeDisplay}
                             onClick={() => {
-                            console.log('modal closed ');
                             close();
                             }}
                         >
