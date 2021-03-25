@@ -67,7 +67,26 @@ export class App extends Component {
      // On average personal math time: 35 min
      // Set new personalized time for our algorithm
       personalStats: [
-
+        {
+          category: "Math",
+          averageTime: 60
+        },
+        {
+          category: "Writing",
+          pages: 1 
+        },
+        {
+          category: "Coding",
+          difficultyRating: 5
+        },
+        {
+          category: "Reading",
+          pages: 2
+        },
+        {
+          category: "Science",
+          difficultyRating: 4
+        }
       ],
       displayMode: "light"
     }

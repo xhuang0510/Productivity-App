@@ -280,6 +280,7 @@ export class SmartScheduler extends Component {
                         {' '}
                         You clicked on the smart scheduler
                         </div>
+                        {/* Where to add stuff */}
                         <div className={optionsDisplay}>
                             <b>Provide an available time range for your activities:</b>
                             <br />
@@ -289,7 +290,12 @@ export class SmartScheduler extends Component {
                                 <DateTimePicker value={this.state.endDate} label="Pick an end time"
                                         onChange={value => this.setState({ endDate: value })}/>
                             </div>
+                            {/* Enter to-do list */}
+                            <div>
+
+                            </div>
                         </div>
+                        {/* Results section */}
                         <div className={resultsDisplay}>
                             Results
                         </div>
