@@ -2,7 +2,7 @@ import React, { Component } from 'react'; //import React Component
 import Clock from 'react-live-clock';
 import { Inject, ScheduleComponent, Day, Week, ViewsDirective, ViewDirective, DragAndDrop, ExcelExport, Resize } from "@syncfusion/ej2-react-schedule"
 import { Button } from 'react-bootstrap';
-import { StickyNoteList, NewNoteButton, SmartScheduler } from "./Components"
+import { StickyNoteList, NewNoteButton } from "./Components"
 import "./css/index.css";
 // import styles from "./css/material-dark.css"
 
@@ -25,8 +25,8 @@ export class AccountInfoDisplay extends Component {
                         <Clock format={'LT'} ticking={true} />
                     </div>
 
-                    <button className="right-menu-buttons" id="login">Login</button>   
-                    <button className="right-menu-buttons">Logout</button>
+                    <button className="menu-buttons" id="login-button">Login</button>   
+                    <button className="menu-buttons" id="logout-button">Logout</button>
                 </div>
             </div>
         )
