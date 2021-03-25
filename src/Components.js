@@ -1,6 +1,7 @@
 import React, { Component } from 'react'; //import React Component
 import { Button } from 'react-bootstrap';
 import { Popup } from 'reactjs-popup';
+import { DateTimePicker } from 'react-rainbow-components';
 import 'reactjs-popup/dist/index.css';
 import "./css/index.css";
 
@@ -169,15 +170,18 @@ export class SmartScheduler extends Component {
         super(props);
         this.state = {
             page: 1,
-            toDoObjects: []
+            toDoObjects: [],
+            smartEvents: [],
+            startDate: new Date(),
+            endDate: new Date()
         };
     }
 
+    // Refresh the smart scheduler when finishing (not closing)
     refresh = () => {
         this.setState({
             page: 1
         })
-        console.log("refresh");
     }
 
     // Navigate to next section
@@ -197,11 +201,40 @@ export class SmartScheduler extends Component {
     // Smart algorithm to generate schedule
     smartGenerate = () => {
         this.nextPage();
+        // Make a temp array to store new events
+        let tempArray = [];
+        // Test events to check functionality
+        let testDate1 = new Date(this.state.startDate.getTime());
+        testDate1.setHours(testDate1.getHours() + 1);
+        let test1 = {
+            Id: 5,
+            Subject: 'Northern Lights Display',
+            StartTime: this.state.startDate,
+            EndTime: testDate1
+        }
+        let testDate2 = new Date(this.state.endDate.getTime());
+        testDate2.setHours(testDate2.getHours() + 1);
+        let test2 = {
+            Id: 6,
+            Subject: 'Orion Nebula At Its Brightest',
+            StartTime: this.state.endDate,
+            EndTime: testDate2
+        }
+        // Add test events REMOVE LATER
+        tempArray.push(test1);
+        tempArray.push(test2);
+        // Set state
+        this.setState({
+            smartEvents: tempArray
+        })
     }
 
     // Update the state
+    // KNOWN BUG: CALENDAR DOES NOT REFRESH UNLESS ROUTE LINKED
     updateState = () => {
-
+        let tempArray = this.props.schedule;
+        this.state.smartEvents.forEach(element => tempArray.push(element));
+        this.props.updateSchedule(tempArray);
     }
 
     render() {
@@ -233,7 +266,7 @@ export class SmartScheduler extends Component {
         return (
             <div>
                 <Popup
-                    trigger={<Button onClick={this.refresh}> Smart Scheduler </Button>}
+                    trigger={<Button onClick={this.refresh}> + </Button>}
                     modal
                     nested
                 >
@@ -248,7 +281,14 @@ export class SmartScheduler extends Component {
                         You clicked on the smart scheduler
                         </div>
                         <div className={optionsDisplay}>
-                            Options
+                            <b>Provide an available time range for your activities:</b>
+                            <br />
+                            <div className="datePickerBox">
+                                <DateTimePicker value={this.state.startDate} label="Pick a start time"
+                                        onChange={value => this.setState({ startDate: value })}/>
+                                <DateTimePicker value={this.state.endDate} label="Pick an end time"
+                                        onChange={value => this.setState({ endDate: value })}/>
+                            </div>
                         </div>
                         <div className={resultsDisplay}>
                             Results

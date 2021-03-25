@@ -463,3 +463,28 @@ input:checked + .round-slider:before {
   width: 100%;
   padding: 10px 5px;
 }
+
+/* Styles radio buttons */
+/* May need this later */
+input[type='radio'] {
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--active-inner);
+  transform: scale(var(--s, .7));
+}
+
+.datePickerBox {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.scheduleInteract {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding: 10px;
+}

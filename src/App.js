@@ -128,7 +128,8 @@ export class App extends Component {
       <div className={appDisplay} id="App">
         <Router>
           <div id="leftMenu" className={this.state.displayMode}>
-            <LeftMenu className="menu" toggle={this.toggleDisplayMode}></LeftMenu>
+            <LeftMenu className="menu" toggle={this.toggleDisplayMode} updateSchedule={this.updateSchedule} 
+                      schedule={this.state.scheduleObjects}></LeftMenu>
             <button onClick={this.logState}>Log the State</button>
           </div>
           <div id="centerMenu" className={this.state.displayMode}>
