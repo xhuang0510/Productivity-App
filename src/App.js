@@ -68,25 +68,31 @@ export class App extends Component {
      // Set new personalized time for our algorithm
       personalStats: [
         {
-          category: "Math",
-          averageTime: 60
+          label: "Math",
+          definingFactor: "Number of Problems",
+          value: 3
         },
         {
-          category: "Writing",
-          pages: 1 
+          label: "Writing",
+          definingFactor: "Pages",
+          value: 1 
         },
         {
-          category: "Coding",
-          difficultyRating: 5
+          label: "Coding",
+          definingFactor: "Difficulty Rating",
+          value: 5
         },
         {
-          category: "Reading",
-          pages: 2
+          label: "Reading",
+          definingFactor: "Pages",
+          value: 2
         },
         {
-          category: "Science",
-          difficultyRating: 4
+          label: "Science",
+          definingFactor: "Difficulty Rating",
+          value: 4
         }
+
       ],
       displayMode: "light"
     }
@@ -148,7 +154,7 @@ export class App extends Component {
         <Router>
           <div id="leftMenu" className={this.state.displayMode}>
             <LeftMenu className="menu" toggle={this.toggleDisplayMode} updateSchedule={this.updateSchedule} 
-                      schedule={this.state.scheduleObjects}></LeftMenu>
+                      schedule={this.state.scheduleObjects} personalStats={this.state.personalStats}></LeftMenu>
             <button onClick={this.logState}>Log the State</button>
           </div>
           <div id="centerMenu" className={this.state.displayMode}>

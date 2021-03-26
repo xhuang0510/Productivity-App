@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; //import React Component
 import { Button } from 'react-bootstrap';
 import { Popup } from 'reactjs-popup';
-import { DateTimePicker } from 'react-rainbow-components';
+import { DateTimePicker, Select, Input } from 'react-rainbow-components';
 import 'reactjs-popup/dist/index.css';
 import "./css/index.css";
 
@@ -173,7 +173,8 @@ export class SmartScheduler extends Component {
             toDoObjects: [],
             smartEvents: [],
             startDate: new Date(),
-            endDate: new Date()
+            endDate: new Date(),
+            subject: ""
         };
     }
 
@@ -247,6 +248,8 @@ export class SmartScheduler extends Component {
         let generateDisplay = "displayNone";
         let finishDisplay = "displayNone";
         let closeDisplay = "";
+
+        let dropdownOptions = this.props.personalStats;
         // Page 2 options
         if (this.state.page === 2) {
             defaultDisplay = "content displayNone";
@@ -291,8 +294,12 @@ export class SmartScheduler extends Component {
                                         onChange={value => this.setState({ endDate: value })}/>
                             </div>
                             {/* Enter to-do list */}
-                            <div>
-
+                            <div className="subjectDropdownBox">
+                                <Select label="Select a Subject" options={dropdownOptions} required value={this.state.subject}
+                                        onChange={value => this.setState({ subject: value})}/>
+                                <div className="displayNone">     
+                                    <Input label="Input Sum" type="number"/>
+                                </div>
                             </div>
                         </div>
                         {/* Results section */}

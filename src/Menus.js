@@ -54,7 +54,7 @@ export class LeftMenu extends Component {
 
                 <div className="scheduleInteract">
                     <button>&larr;</button>
-                    <SmartScheduler updateSchedule={this.props.updateSchedule} schedule={this.props.schedule}></SmartScheduler>
+                    <SmartScheduler updateSchedule={this.props.updateSchedule} schedule={this.props.schedule} personalStats={this.props.personalStats}></SmartScheduler>
                     <button>&rarr;</button>
                 </div>
                 
