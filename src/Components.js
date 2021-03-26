@@ -97,8 +97,6 @@ export class StickyNoteList extends Component {
         let newArray = this.props.stickyNotes;
         let currSticky = newArray[index];
         let pinned = currSticky.isPinned;
-        
-
         currSticky = {
             title: currSticky.title,
             body: currSticky.body,
@@ -132,7 +130,7 @@ export class StickyNoteList extends Component {
                 </StickyNote>)
         }
         let renderDisplay = (
-            <div className="scrollable">
+            <div className="scrollable stickyNoteMiniSection">
                 {stickyNoteDisplay}
             </div>
         )

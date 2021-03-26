@@ -269,8 +269,27 @@ input:checked + .round-slider:before {
 
 /* Scrolling section of stickynotes */
 .scrollable {
-  height: 78vh;
   overflow-y: overlay;
+}
+
+.stickyNoteMiniSection {
+  height: 78vh;
+}
+
+.statCardHeightLimit {
+  height: 85vh;
+}
+
+.statCards {
+  display: flex;
+  flex-direction: row;
+}
+
+.statCardItem {
+  margin-left: 4vh;
+  margin-right: 4vh;
+  margin-bottom: 3vh;
+  margin-top: 3vh;
 }
 
 /* Aligning the account layout section */
@@ -476,4 +495,9 @@ input[type='radio'] {
   justify-content: center;
   flex-direction: row;
   padding: 10px;
+}
+
+/* Line divider  */
+hr.solid {
+  border-top: 3px solid #bbb;
 }

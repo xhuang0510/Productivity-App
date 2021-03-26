@@ -76,7 +76,7 @@ export class CenterMenu extends Component {
                     <ScheduleUI schedule={this.props.schedule} update={this.props.updateSchedule}/>
                 </Route>
                 <Route path="/stats">
-                    <StatsUI />
+                    <StatsUI stats={this.props.stats}/>
                 </Route>
                 <Route path="/achievements">
                     <AchievementsUI />

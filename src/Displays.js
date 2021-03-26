@@ -1,10 +1,10 @@
 import React, { Component } from 'react'; //import React Component
 import Clock from 'react-live-clock';
-import { Inject, ScheduleComponent, Day, Week, ViewsDirective, ViewDirective, DragAndDrop, ExcelExport, Resize } from "@syncfusion/ej2-react-schedule"
-import { Button } from 'react-bootstrap';
-import { StickyNoteList, NewNoteButton } from "./Components"
+import { Inject, ScheduleComponent, Day, Week, ViewsDirective, ViewDirective, DragAndDrop, ExcelExport, Resize } from "@syncfusion/ej2-react-schedule";
+import { StickyNoteList, NewNoteButton } from "./Components";
+import { Input, Card, Button } from 'react-rainbow-components';
+import styled from 'styled-components';
 import "./css/index.css";
-// import styles from "./css/material-dark.css"
 
 export class AccountInfoDisplay extends Component {
     // Stores the state of this component and inherits properties from parent
@@ -114,6 +114,11 @@ export class ScheduleUI extends Component {
     }
 }
 
+const StyledCard = styled(Card)`
+    width: 285px;
+    height: 420px;
+`;
+
 export class StatsUI extends Component {
     constructor(props) {
         super(props);
@@ -123,9 +128,35 @@ export class StatsUI extends Component {
     }
 
     render() {
+        let userStats = this.props.stats;
+        let flexArray = [];
+        let statCardFlexRow = [];
+        for (let i = 0; i < userStats.length; i++) {
+            // Insert more details here if needed
+            statCardFlexRow.push(
+                <StyledCard
+                    className="statCardItem" key={i}
+                >
+                    <h1>{userStats[i].label}</h1>
+                    <p><b>{userStats[i].definingFactor}</b>: {userStats[i].value}</p>
+                </StyledCard>);
+            if (i % 3 === 2 || i === userStats.length - 1) {
+                flexArray.push(
+                    <div className="statCards" key={i}>
+                        {statCardFlexRow}
+                    </div>
+                );
+                statCardFlexRow = [];
+            }
+        }
+        console.log(flexArray);
         return (
             <div>
                 <h1>These are stats</h1>
+                <hr class="solid" />
+                <div className="scrollable statCardHeightLimit">
+                    {flexArray}
+                </div>
             </div>
         );
     }
@@ -160,6 +191,7 @@ export class OptionsUI extends Component {
         return (
             <div>
                 <h1>Options</h1> 
+                <Button>Edit Personal Stats</Button>
             </div>
         );
     }

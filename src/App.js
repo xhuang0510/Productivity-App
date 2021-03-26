@@ -56,36 +56,34 @@ export class App extends Component {
           isPinned: false
         }
       ],
-      /*
-        {
-          readingTime: 90,
-          mathTime: 60,
-          ...
-        }
-      */
      // Average math time: 45 min
      // On average personal math time: 35 min
      // Set new personalized time for our algorithm
       personalStats: [
         {
-          category: "Math",
-          averageTime: 60
+          label: "Math",
+          definingFactor: "Number of Problems",
+          value: 3
         },
         {
-          category: "Writing",
-          pages: 1 
+          label: "Writing",
+          definingFactor: "Pages",
+          value: 1 
         },
         {
-          category: "Coding",
-          difficultyRating: 5
+          label: "Coding",
+          definingFactor: "Difficulty Rating",
+          value: 5
         },
         {
-          category: "Reading",
-          pages: 2
+          label: "Reading",
+          definingFactor: "Pages",
+          value: 2
         },
         {
-          category: "Science",
-          difficultyRating: 4
+          label: "Science",
+          definingFactor: "Difficulty Rating",
+          value: 4
         }
       ],
       displayMode: "light"
@@ -152,7 +150,7 @@ export class App extends Component {
             <button onClick={this.logState}>Log the State</button>
           </div>
           <div id="centerMenu" className={this.state.displayMode}>
-            <CenterMenu className="menu" updateSchedule={this.updateSchedule} schedule={this.state.scheduleObjects}></CenterMenu>
+            <CenterMenu className="menu" stats={this.state.personalStats} updateSchedule={this.updateSchedule} schedule={this.state.scheduleObjects}></CenterMenu>
           </div>
           <div id="rightMenu" className={this.state.displayMode}>
             <RightMenu 
