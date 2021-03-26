@@ -85,6 +85,7 @@ export class App extends Component {
           definingFactor: "Difficulty Rating",
           value: 4
         }
+
       ],
       displayMode: "light"
     }
@@ -146,7 +147,7 @@ export class App extends Component {
         <Router>
           <div id="leftMenu" className={this.state.displayMode}>
             <LeftMenu className="menu" toggle={this.toggleDisplayMode} updateSchedule={this.updateSchedule} 
-                      schedule={this.state.scheduleObjects}></LeftMenu>
+                      schedule={this.state.scheduleObjects} personalStats={this.state.personalStats}></LeftMenu>
             <button onClick={this.logState}>Log the State</button>
           </div>
           <div id="centerMenu" className={this.state.displayMode}>
